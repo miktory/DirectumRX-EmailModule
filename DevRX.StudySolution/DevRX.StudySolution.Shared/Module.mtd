@@ -1,0 +1,61 @@
+{
+  "$type": "Sungero.Metadata.SolutionMetadata, Sungero.Metadata",
+  "NameGuid": "f24d24e2-cac4-4ddc-b8e3-af934fb7edc6",
+  "Name": "StudySolution",
+  "AsyncHandlers": [],
+  "ClientAssemblyName": "DevRX.StudySolution.Client",
+  "ClientBaseAssemblyName": "DevRX.StudySolution.ClientBase",
+  "ClientBaseNamespace": "DevRX.StudySolution.ClientBase",
+  "ClientNamespace": "DevRX.StudySolution.Client",
+  "Code": "StudySo",
+  "CompanyCode": "DevRX",
+  "Cover": {
+    "NameGuid": "8a845634-1e20-482f-8c4d-6cc817de433f",
+    "Actions": [],
+    "Background": null,
+    "Footer": {
+      "NameGuid": "e16ec82e-0d3a-4ecc-90c4-91304e3e29ca",
+      "BackgroundPosition": "Stretch"
+    },
+    "Groups": [],
+    "Header": {
+      "NameGuid": "53d8809e-1fd9-48bc-b35f-518555c3b4c8",
+      "BackgroundPosition": "Stretch"
+    },
+    "RemoteControls": [],
+    "Tabs": []
+  },
+  "DesktopViews": [],
+  "IconResourcesKeys": [],
+  "Importance": "Medium",
+  "InterfaceAssemblyName": "Sungero.Domain.Interfaces",
+  "InterfaceNamespace": "DevRX.StudySolution",
+  "IsolatedAssemblyName": "DevRX.StudySolution.Isolated",
+  "IsolatedNamespace": "DevRX.StudySolution.Isolated",
+  "OrderedSpecialFolders": [],
+  "PublicStructures": [],
+  "ResourceInterfaceAssemblyName": "Sungero.Domain.Interfaces",
+  "ResourceInterfaceNamespace": "DevRX.StudySolution",
+  "ResourcesKeys": [],
+  "ServerAssemblyName": "DevRX.StudySolution.Server",
+  "ServerNamespace": "DevRX.StudySolution.Server",
+  "SharedAssemblyName": "DevRX.StudySolution.Shared",
+  "SharedNamespace": "DevRX.StudySolution.Shared",
+  "SpecialFolders": [],
+  "Version": "0.0.1.0",
+  "Widgets": [],
+  "Versions": [
+    {
+      "Type": "SolutionMetadata",
+      "Number": 8
+    },
+    {
+      "Type": "ModuleMetadata",
+      "Number": 8
+    },
+    {
+      "Type": "DomainApi",
+      "Number": 3
+    }
+  ]
+}
