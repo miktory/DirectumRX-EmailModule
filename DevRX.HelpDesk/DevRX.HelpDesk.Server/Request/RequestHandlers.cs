@@ -15,6 +15,7 @@ namespace DevRX.HelpDesk
     {
       _obj.Number = _obj.Id;
       _obj.Responsible = Employees.Current;
+      _obj.LifeCycle = LifeCycle.InWork;
     }
   }
 
