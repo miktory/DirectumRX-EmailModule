@@ -427,6 +427,10 @@
       "Name": "RequestActions",
       "Code": "RequestActs",
       "EntityGuid": "2768d737-9960-4ed8-958a-f2de1fa164f8",
+      "HandledEvents": [
+        "AddedShared",
+        "ChangedShared"
+      ],
       "IsRequired": true,
       "IsShowedInList": false,
       "PreviousPropertyGuid": "030c41f2-6138-4f19-8ef5-69ddfa0711bd"
@@ -436,6 +440,7 @@
       "NameGuid": "a9039cad-fc65-48f1-9a81-1aa22cd5ac43",
       "Name": "HoursSum",
       "Code": "HoursSum",
+      "IsEnabled": false,
       "ListDataBinderTypeName": "Sungero.Presentation.CommonDataBinders.NumericEditorToIntAndDoubleBinder",
       "PreviousPropertyGuid": "6b7da039-e408-4d62-b2f8-cd190012ee8d"
     }
