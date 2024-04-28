@@ -7,8 +7,4 @@ using DevRX.HelpDesk.ExternalRequest;
 
 namespace DevRX.HelpDesk
 {
-  partial class ExternalRequestSharedHandlers
-  {
-
-  }
 }

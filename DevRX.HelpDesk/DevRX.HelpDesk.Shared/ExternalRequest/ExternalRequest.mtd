@@ -91,6 +91,9 @@
       "Code": "Organization",
       "EntityGuid": "78278dd7-f0d2-4e35-b543-13d0bd462cd6",
       "FlatListInStandaloneLookup": true,
+      "HandledEvents": [
+        "ValueInputClient"
+      ],
       "IsRequired": true,
       "ListDataBinderTypeName": "Sungero.Presentation.CommonDataBinders.DropDownEditorToNavigationBinder",
       "PreviousPropertyGuid": "030c41f2-6138-4f19-8ef5-69ddfa0711bd"
@@ -102,8 +105,13 @@
       "Code": "Contact",
       "EntityGuid": "c8daaef9-a679-4a29-ac01-b93c1637c72e",
       "FlatListInStandaloneLookup": true,
+      "HandledEvents": [
+        "ValueInputClient",
+        "LookupServer"
+      ],
       "IsRequired": true,
       "ListDataBinderTypeName": "Sungero.Presentation.CommonDataBinders.DropDownEditorToNavigationBinder",
+      "NeedPassEntityToLookupEvent": true,
       "PreviousPropertyGuid": "ac008266-4bbf-4461-8385-8167a208df05"
     }
   ],
