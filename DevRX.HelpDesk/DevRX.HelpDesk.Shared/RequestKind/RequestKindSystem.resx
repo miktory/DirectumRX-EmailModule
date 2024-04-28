@@ -67,4 +67,10 @@
   <data name="Property_Note" xml:space="preserve">
     <value>Note</value>
   </data>
+  <data name="AccusativeDisplayName" xml:space="preserve">
+    <value>Request Type</value>
+  </data>
+  <data name="CollectionDisplayName" xml:space="preserve">
+    <value>Request Type</value>
+  </data>
 </root>

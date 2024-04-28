@@ -118,4 +118,16 @@
   <data name="ControlGroup_1a7d4be8a91c461981725f763fc50bf7" xml:space="preserve">
     <value />
   </data>
+  <data name="Property_RequestActions" xml:space="preserve">
+    <value>Request Actions</value>
+  </data>
+  <data name="Property_HoursSum" xml:space="preserve">
+    <value>Sum of hours</value>
+  </data>
+  <data name="ControlGroup_e8e3e27a637649fe9e65342f0be06e2a" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Form_f9b1e65f1bf04d07aa07f720d82493bf" xml:space="preserve">
+    <value>Activity</value>
+  </data>
 </root>
