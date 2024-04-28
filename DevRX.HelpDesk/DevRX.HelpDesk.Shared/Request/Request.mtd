@@ -297,6 +297,9 @@
       "ParentFormGuid": "b5f512f9-ace0-4eb9-9204-f2562a6cfedf"
     }
   ],
+  "HandledEvents": [
+    "CreatedServer"
+  ],
   "IconResourcesKeys": [],
   "IntegrationServiceName": "HelpDeskRequest",
   "IsAbstract": true,
@@ -321,6 +324,7 @@
       "NameGuid": "ac920416-b45a-4e09-8907-1374e0ba16ae",
       "Name": "Number",
       "Code": "Number",
+      "IsEnabled": false,
       "IsRequired": true,
       "IsUnique": true,
       "ListDataBinderTypeName": "Sungero.Presentation.CommonDataBinders.NumericEditorToIntAndDoubleBinder",

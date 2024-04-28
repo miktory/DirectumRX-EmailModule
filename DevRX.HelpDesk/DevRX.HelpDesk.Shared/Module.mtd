@@ -7,7 +7,7 @@
   "ClientBaseAssemblyName": "DevRX.HelpDesk.ClientBase",
   "ClientBaseNamespace": "DevRX.HelpDesk.ClientBase",
   "ClientNamespace": "DevRX.HelpDesk.Client",
-  "Code": "HelpDes",
+  "Code": "Desk",
   "CompanyCode": "DevRX",
   "Cover": {
     "NameGuid": "ef84f8b0-3c0e-4f99-8abe-6d7ef16e15fe",
