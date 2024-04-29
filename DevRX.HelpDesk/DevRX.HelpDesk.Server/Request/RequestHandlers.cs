@@ -14,7 +14,14 @@ namespace DevRX.HelpDesk
     public override void BeforeSave(Sungero.Domain.BeforeSaveEventArgs e)
     {
       if (_obj.LifeCycle == LifeCycle.Closed)
+      {
+        if (string.IsNullOrEmpty(_obj.Result))
+        {
+          e.AddError("Перед закрытием обращения заполните результат.");
+          return;
+        }
         _obj.ClosedDate = Calendar.Today;
+      }
     }
 
     public override void Created(Sungero.Domain.CreatedEventArgs e)
