@@ -299,7 +299,8 @@
   ],
   "HandledEvents": [
     "CreatedServer",
-    "BeforeSaveServer"
+    "BeforeSaveServer",
+    "RefreshClient"
   ],
   "IconResourcesKeys": [],
   "IntegrationServiceName": "HelpDeskRequest",
