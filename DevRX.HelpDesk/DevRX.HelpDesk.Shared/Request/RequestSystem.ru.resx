@@ -121,4 +121,16 @@
   <data name="Form_f9b1e65f1bf04d07aa07f720d82493bf" xml:space="preserve">
     <value>Активность</value>
   </data>
+  <data name="Action_OpenClosedRequest" xml:space="preserve">
+    <value>Открыть обращение</value>
+  </data>
+  <data name="Action_OpenClosedRequestHint" xml:space="preserve">
+    <value>Открыть закрытое обращение.</value>
+  </data>
+  <data name="Action_OpenClosedRequestDescription" xml:space="preserve">
+    <value>Открыть закрытое обращение для изменения информации.</value>
+  </data>
+  <data name="Ribbon_GroupRequest_be5eb0852d66454ea8214fd56f7c3296" xml:space="preserve">
+    <value>Работа с обращениями</value>
+  </data>
 </root>
