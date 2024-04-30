@@ -2,6 +2,7 @@
   "$type": "Sungero.Metadata.EntityMetadata, Sungero.Metadata",
   "NameGuid": "51d93a3c-4bf8-42d6-9d5a-71b21788c06a",
   "Name": "Request",
+  "AccessRightsMode": "Both",
   "Actions": [
     {
       "NameGuid": "200e44c0-133d-4897-8346-5a9ca86e0849",
@@ -318,7 +319,8 @@
   "IsVisible": false,
   "OperationsClass": "",
   "Overridden": [
-    "IsVisible"
+    "IsVisible",
+    "AccessRightsMode"
   ],
   "Properties": [
     {
@@ -327,6 +329,7 @@
       "Name": "Name",
       "Code": "Name",
       "IsDisplayValue": true,
+      "IsEnabled": false,
       "IsQuickSearchAllowed": true,
       "ListDataBinderTypeName": "Sungero.Presentation.CommonDataBinders.StringEditorToStringBinder",
       "PreviousPropertyGuid": "1dcedc29-5140-4770-ac92-eabc212326a1"

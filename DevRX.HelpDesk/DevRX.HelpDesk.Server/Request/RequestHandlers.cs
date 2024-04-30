@@ -22,6 +22,7 @@ namespace DevRX.HelpDesk
         }
         _obj.ClosedDate = Calendar.Today;
       }
+      _obj.Name = Functions.Request.FormatRequestSubject(_obj);
     }
 
     public override void Created(Sungero.Domain.CreatedEventArgs e)
@@ -30,6 +31,7 @@ namespace DevRX.HelpDesk
       _obj.Responsible = Employees.Current;
       _obj.LifeCycle = LifeCycle.InWork;
       _obj.CreatedDate = Calendar.Today;
+      _obj.Name = "Тема будет сформирована автоматически.";
     }
   }
 

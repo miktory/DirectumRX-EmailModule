@@ -9,5 +9,21 @@ namespace DevRX.HelpDesk.Server
 {
   public partial class ModuleInitializer
   {
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public void GrantReadAccessRightsForAllRequests()
+    {
+      Hel;
+      H
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public void Function1()
+    {
+    }
   }
 }
