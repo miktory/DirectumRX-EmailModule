@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Sungero.Core;
 using Sungero.CoreEntities;
-using DevRX.HelpDesk.InternalRequests;
+using DevRX.HelpDesk.InternalRequest;
 
 namespace DevRX.HelpDesk.Client
 {
-  partial class InternalRequestsFunctions
+  partial class InternalRequestFunctions
   {
 
   }

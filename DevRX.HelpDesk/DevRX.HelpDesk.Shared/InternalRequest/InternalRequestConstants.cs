@@ -3,7 +3,7 @@ using Sungero.Core;
 
 namespace DevRX.HelpDesk.Constants
 {
-  public static class InternalRequests
+  public static class InternalRequest
   {
 
   }

@@ -70,4 +70,16 @@
   <data name="Property_Author" xml:space="preserve">
     <value>Автор</value>
   </data>
+  <data name="Action_ShowEmployeeRequests" xml:space="preserve">
+    <value>Показать обращения сотрудника</value>
+  </data>
+  <data name="Action_ShowEmployeeRequestsHint" xml:space="preserve">
+    <value>Показать обращения сотрудника.</value>
+  </data>
+  <data name="Action_ShowEmployeeRequestsDescription" xml:space="preserve">
+    <value>Показать обращения сотрудника.</value>
+  </data>
+  <data name="Ribbon_EmployeeRequests_ef3facbff519441eabc0d6307bc29e23" xml:space="preserve">
+    <value>Внутренние обращения</value>
+  </data>
 </root>

@@ -70,4 +70,22 @@
   <data name="Property_Author" xml:space="preserve">
     <value>Author</value>
   </data>
+  <data name="Action_ShowEmployeeRequests" xml:space="preserve">
+    <value>Employee requests</value>
+  </data>
+  <data name="Action_ShowEmployeeRequestsDescription" xml:space="preserve">
+    <value>Show employee requests.</value>
+  </data>
+  <data name="Action_ShowEmployeeRequestsHint" xml:space="preserve">
+    <value>Show employee requests.</value>
+  </data>
+  <data name="Action_ShowEmployeeRequestsConfirmationMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Action_ShowEmployeeRequestsConfirmationDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Ribbon_EmployeeRequests_ef3facbff519441eabc0d6307bc29e23" xml:space="preserve">
+    <value>Internal requests</value>
+  </data>
 </root>

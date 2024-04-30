@@ -1,7 +1,17 @@
 {
   "$type": "Sungero.Metadata.EntityMetadata, Sungero.Metadata",
   "NameGuid": "127c4ee2-1707-4d30-9733-359665b8b822",
-  "Name": "InternalRequests",
+  "Name": "InternalRequest",
+  "Actions": [
+    {
+      "NameGuid": "da2d6007-e9c2-40f8-864d-1983f9711bd9",
+      "Name": "ShowEmployeeRequests",
+      "ActionArea": "Card",
+      "GenerateHandler": true,
+      "LargeIconName": null,
+      "SmallIconName": null
+    }
+  ],
   "BaseGuid": "51d93a3c-4bf8-42d6-9d5a-71b21788c06a",
   "CanBeNavigationPropertyType": true,
   "CreationAreaMetadata": {
@@ -87,8 +97,26 @@
     "NameGuid": "93a79769-237f-4b7d-b56a-5f156b78bb3f",
     "Name": "RibbonCard",
     "Categories": [],
-    "Elements": [],
-    "Groups": [],
+    "Elements": [
+      {
+        "$type": "Sungero.Metadata.RibbonActionButtonMetadata, Sungero.Metadata",
+        "NameGuid": "fc389e96-e2d2-4157-ac31-6d5759deba27",
+        "Name": "ActionButton",
+        "ActionGuid": "da2d6007-e9c2-40f8-864d-1983f9711bd9",
+        "Index": 0,
+        "ParentGuid": "ef3facbf-f519-441e-abc0-d6307bc29e23"
+      }
+    ],
+    "Groups": [
+      {
+        "NameGuid": "ef3facbf-f519-441e-abc0-d6307bc29e23",
+        "Name": "EmployeeRequests",
+        "IconName": null,
+        "Index": 22,
+        "ParentGuid": "21a31627-5f58-4416-8c4a-90f538ee2e57",
+        "SmallIconName": null
+      }
+    ],
     "IsAncestorMetadata": true,
     "Pages": [],
     "RibbonKind": "Card"
