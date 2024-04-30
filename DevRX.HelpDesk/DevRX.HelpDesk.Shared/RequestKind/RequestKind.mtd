@@ -2,6 +2,7 @@
   "$type": "Sungero.Metadata.EntityMetadata, Sungero.Metadata",
   "NameGuid": "02c394fa-ff7c-47fd-a1cc-0f4bab8d1acc",
   "Name": "RequestKind",
+  "AccessRightsMode": "Both",
   "BaseGuid": "04581d26-0780-4cfd-b3cd-c2cafc5798b0",
   "CanBeNavigationPropertyType": true,
   "Code": "RequestKind",
@@ -77,7 +78,8 @@
   "OperationsClass": "",
   "Overridden": [
     "IsStatusEnabled",
-    "IsVisible"
+    "IsVisible",
+    "AccessRightsMode"
   ],
   "Properties": [
     {

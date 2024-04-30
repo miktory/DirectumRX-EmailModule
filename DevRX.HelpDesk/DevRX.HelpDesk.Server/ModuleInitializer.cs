@@ -10,20 +10,21 @@ namespace DevRX.HelpDesk.Server
   public partial class ModuleInitializer
   {
 
-    /// <summary>
-    /// 
-    /// </summary>
-    public void GrantReadAccessRightsForAllRequests()
+    public override void Initializing(Sungero.Domain.ModuleInitializingEventArgs e)
     {
-      Hel;
-      H
+      GrantAllUsersReadAccessRights();
     }
 
     /// <summary>
     /// 
     /// </summary>
-    public void Function1()
+
+    public void GrantAllUsersReadAccessRights()
     {
+      RequestKinds.AccessRights.Grant(Roles.AllUsers, DefaultAccessRightsTypes.Read);
+      Requests.AccessRights.Grant(Roles.AllUsers, DefaultAccessRightsTypes.Read);
+      RequestKinds.AccessRights.Save();
+      Requests.AccessRights.Save();
     }
   }
 }
