@@ -62,6 +62,9 @@
     <value>HelpDesk</value>
   </data>
   <data name="CoverTitle" xml:space="preserve">
-    <value>HelpDesk</value>
+    <value>Help Desk</value>
+  </data>
+  <data name="CoverDescription" xml:space="preserve">
+    <value>Use this module to contact support.</value>
   </data>
 </root>

@@ -64,4 +64,7 @@
   <data name="CoverTitle" xml:space="preserve">
     <value>Поддержка пользователей</value>
   </data>
+  <data name="CoverDescription" xml:space="preserve">
+    <value>Используйте этот модуль для обращения в поддержку.</value>
+  </data>
 </root>
