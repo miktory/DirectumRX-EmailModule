@@ -76,4 +76,7 @@
   <data name="Control_a4234aaf007d40fd9b3fee5fff8313d0_EmptyText" xml:space="preserve">
     <value />
   </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>Приложение к обращению</value>
+  </data>
 </root>
