@@ -148,4 +148,19 @@
   <data name="Ribbon_GroupRequest_be5eb0852d66454ea8214fd56f7c3296" xml:space="preserve">
     <value>Request options</value>
   </data>
+  <data name="Action_CreateAddendumRequest" xml:space="preserve">
+    <value>Create addendum request</value>
+  </data>
+  <data name="Action_CreateAddendumRequestDescription" xml:space="preserve">
+    <value>Create addendum request</value>
+  </data>
+  <data name="Action_CreateAddendumRequestHint" xml:space="preserve">
+    <value>Create addendum request</value>
+  </data>
+  <data name="Action_CreateAddendumRequestConfirmationMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Action_CreateAddendumRequestConfirmationDescription" xml:space="preserve">
+    <value />
+  </data>
 </root>

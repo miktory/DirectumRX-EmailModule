@@ -133,4 +133,13 @@
   <data name="Ribbon_GroupRequest_be5eb0852d66454ea8214fd56f7c3296" xml:space="preserve">
     <value>Работа с обращениями</value>
   </data>
+  <data name="Action_CreateAddendumRequest" xml:space="preserve">
+    <value>Создать приложение к обращению</value>
+  </data>
+  <data name="Action_CreateAddendumRequestHint" xml:space="preserve">
+    <value>Создать приложение к обращению</value>
+  </data>
+  <data name="Action_CreateAddendumRequestDescription" xml:space="preserve">
+    <value>Создать приложение к обращению</value>
+  </data>
 </root>

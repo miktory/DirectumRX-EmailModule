@@ -9,6 +9,16 @@ namespace DevRX.HelpDesk.Client
 {
   partial class RequestActions
   {
+    public virtual void CreateAddendumRequest(Sungero.Domain.Client.ExecuteActionArgs e)
+    {
+      Functions.Request.Remote.CreateAddendumRequest(_obj).Show();
+    }
+
+    public virtual bool CanCreateAddendumRequest(Sungero.Domain.Client.CanExecuteActionArgs e)
+    {
+      return true;
+    }
+
     public virtual void OpenClosedRequest(Sungero.Domain.Client.ExecuteActionArgs e)
     {
         _obj.LifeCycle = LifeCycle.InWork;
