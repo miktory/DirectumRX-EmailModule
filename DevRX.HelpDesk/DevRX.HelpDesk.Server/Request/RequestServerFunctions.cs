@@ -11,6 +11,14 @@ namespace DevRX.HelpDesk.Server
   {
 
     /// <summary>
+    /// 
+    /// </summary>       
+    public void Function()
+    {
+      
+    }
+
+    /// <summary>
     /// Создать связанный с обращением документ.
     /// </summary>
     /// <returns>Документ.</returns>
@@ -22,6 +30,14 @@ namespace DevRX.HelpDesk.Server
       document.Name = string.Format("Приложение к обращению № {0}", _obj.Number);
       return document;
     }
+    
+        [Remote(IsPure=true)]
+    public IQueryable<IAddendumRequest>  GetAddendumRequests()
+    {
+      return AddendumRequests.GetAll(r => Equals(r.Request.Responsible, _obj.Responsible));
+    }
+    
+          
 
 
   }

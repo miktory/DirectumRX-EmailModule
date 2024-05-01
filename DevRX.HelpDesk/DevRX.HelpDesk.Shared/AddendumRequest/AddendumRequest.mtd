@@ -88,6 +88,9 @@
       ]
     }
   ],
+  "HandledEvents": [
+    "CreatedServer"
+  ],
   "IconResourcesKeys": [],
   "IntegrationServiceName": "HelpDeskAddendumRequest",
   "OperationsClass": "",

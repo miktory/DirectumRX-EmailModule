@@ -163,4 +163,19 @@
   <data name="Action_CreateAddendumRequestConfirmationDescription" xml:space="preserve">
     <value />
   </data>
+  <data name="Action_ShowRequestAddendum" xml:space="preserve">
+    <value>Show request addendums</value>
+  </data>
+  <data name="Action_ShowRequestAddendumDescription" xml:space="preserve">
+    <value>Show request addendums.</value>
+  </data>
+  <data name="Action_ShowRequestAddendumHint" xml:space="preserve">
+    <value>Show request addendums.</value>
+  </data>
+  <data name="Action_ShowRequestAddendumConfirmationMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Action_ShowRequestAddendumConfirmationDescription" xml:space="preserve">
+    <value />
+  </data>
 </root>
