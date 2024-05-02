@@ -17,9 +17,11 @@ namespace DevRX.HelpDesk.Server
       var newRequests = Requests.GetAll(r => r.CreatedDate.Value > Calendar.Today.BeginningOfWeek());
       // Получить исполнителя по задаче,
       // в рамках данной практики - произвольный сотрудник.
-      var performer = Sungero.Company.Employees.GetAll().First();
+      var companyName = "Служба поддержки";
+      var company = Sungero.Company.Departments.GetAll().Where(x => x.Name == companyName).First();
+      var manager = company.Manager;
       // Создать и стартовать задачу.
-      var task= Sungero.Workflow.SimpleTasks.CreateWithNotices("Статистика по обращениям", performer);
+      var task= Sungero.Workflow.SimpleTasks.CreateWithNotices("Статистика по обращениям", manager);
       task.ActiveText = "Зарегистрировано обращений: " + newRequests.Count();
       task.Start();
     }
