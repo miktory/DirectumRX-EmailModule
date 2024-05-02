@@ -27,6 +27,14 @@
       "GenerateHandler": true,
       "LargeIconName": null,
       "SmallIconName": null
+    },
+    {
+      "NameGuid": "24b8bfe1-b637-4d34-bc89-177999171707",
+      "Name": "FindRequestById",
+      "ActionArea": "Card",
+      "GenerateHandler": true,
+      "LargeIconName": null,
+      "SmallIconName": null
     }
   ],
   "BaseGuid": "04581d26-0780-4cfd-b3cd-c2cafc5798b0",
@@ -74,8 +82,43 @@
   "FilterPanel": {
     "NameGuid": "b0125fbd-3b91-4dbb-914a-689276216404",
     "Name": "FilterPanel",
-    "Controls": [],
-    "IsAncestorMetadata": true
+    "Controls": [
+      {
+        "$type": "Sungero.Metadata.FilterGroupMetadata, Sungero.Metadata",
+        "NameGuid": "cd648358-6c6e-4d27-97a9-af0d2b0608a8",
+        "Name": "GroupFlags"
+      },
+      {
+        "$type": "Sungero.Metadata.FilterListMetadata, Sungero.Metadata",
+        "NameGuid": "c3455e3c-8ba5-47a5-bff1-c0aee896474e",
+        "Name": "GroupFlagsFlagsList",
+        "ParentGuid": "cd648358-6c6e-4d27-97a9-af0d2b0608a8"
+      },
+      {
+        "$type": "Sungero.Metadata.FilterListItemMetadata, Sungero.Metadata",
+        "NameGuid": "ae4e1fcf-2232-4417-9848-8730b1890de3",
+        "Name": "FlagInWork",
+        "ParentGuid": "c3455e3c-8ba5-47a5-bff1-c0aee896474e"
+      },
+      {
+        "$type": "Sungero.Metadata.FilterListItemMetadata, Sungero.Metadata",
+        "NameGuid": "a9773e53-5b4f-4637-a77f-f7ed5f600170",
+        "Name": "FlagOnControl",
+        "ParentGuid": "c3455e3c-8ba5-47a5-bff1-c0aee896474e",
+        "PreviousGuid": "ae4e1fcf-2232-4417-9848-8730b1890de3"
+      },
+      {
+        "$type": "Sungero.Metadata.FilterListItemMetadata, Sungero.Metadata",
+        "NameGuid": "aa17b415-7bd8-4170-ae17-5db6ab06e4a7",
+        "Name": "FlagClosed",
+        "ParentGuid": "c3455e3c-8ba5-47a5-bff1-c0aee896474e",
+        "PreviousGuid": "a9773e53-5b4f-4637-a77f-f7ed5f600170"
+      }
+    ],
+    "IsAncestorMetadata": true,
+    "Overridden": [
+      "Controls"
+    ]
   },
   "Forms": [
     {
@@ -327,7 +370,9 @@
   "HandledEvents": [
     "CreatedServer",
     "BeforeSaveServer",
-    "RefreshClient"
+    "RefreshClient",
+    "FilteringServer",
+    "ValidateFilterPanelClient"
   ],
   "IconResourcesKeys": [],
   "IntegrationServiceName": "HelpDeskRequest",

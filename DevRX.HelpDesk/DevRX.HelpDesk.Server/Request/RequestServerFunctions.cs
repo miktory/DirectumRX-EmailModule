@@ -9,15 +9,6 @@ namespace DevRX.HelpDesk.Server
 {
   partial class RequestFunctions
   {
-
-    /// <summary>
-    /// 
-    /// </summary>       
-    public void Function()
-    {
-      
-    }
-
     /// <summary>
     /// Создать связанный с обращением документ.
     /// </summary>
@@ -31,14 +22,16 @@ namespace DevRX.HelpDesk.Server
       return document;
     }
     
-        [Remote(IsPure=true)]
+    [Remote(IsPure=true)]
     public IQueryable<IAddendumRequest>  GetAddendumRequests()
     {
       return AddendumRequests.GetAll(r => Equals(r.Request.Responsible, _obj.Responsible));
     }
     
-          
-
-
+    [Remote(IsPure=true)]
+    public IQueryable<IRequest>  GetRequestById(long id)
+    {
+      return Requests.GetAll(r => Equals(id, r.Number));
+    }  
   }
 }

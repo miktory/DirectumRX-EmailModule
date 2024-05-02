@@ -9,6 +9,21 @@ namespace DevRX.HelpDesk.Client
 {
   partial class RequestActions
   {
+    public virtual void FindRequestById(Sungero.Domain.Client.ExecuteActionArgs e)
+    {
+      var dialog = Dialogs.CreateInputDialog("Поиск обращения по номеру");
+      var id = dialog.AddInteger("Номер", true);
+      if (dialog.Show() == DialogButtons.Ok)
+        Functions.Request.Remote.GetRequestById(_obj, (long)id.Value).Show();
+    }
+    
+
+
+    public virtual bool CanFindRequestById(Sungero.Domain.Client.CanExecuteActionArgs e)
+    {
+      return true;
+    }
+
     public virtual void ShowRequestAddendum(Sungero.Domain.Client.ExecuteActionArgs e)
     {
       Functions.Request.Remote.GetAddendumRequests(_obj).Show();

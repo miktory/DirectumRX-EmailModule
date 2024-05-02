@@ -10,5 +10,6 @@ namespace DevRX.HelpDesk.Server
   partial class ExternalRequestFunctions
   {
 
+   
   }
 }

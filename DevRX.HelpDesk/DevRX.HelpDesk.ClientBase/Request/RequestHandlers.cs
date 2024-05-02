@@ -8,6 +8,15 @@ using Sungero.Company;
 
 namespace DevRX.HelpDesk
 {
+  partial class RequestFilteringClientHandler
+  {
+
+    public override void ValidateFilterPanel(Sungero.Domain.Client.ValidateFilterPanelEventArgs e)
+    {
+      
+    }
+  }
+
   partial class RequestClientHandlers
   {
 

@@ -178,4 +178,34 @@
   <data name="Action_ShowRequestAddendumConfirmationDescription" xml:space="preserve">
     <value />
   </data>
+  <data name="Action_FindRequestById" xml:space="preserve">
+    <value>Find request by ID</value>
+  </data>
+  <data name="Action_FindRequestByIdDescription" xml:space="preserve">
+    <value>Find request by ID</value>
+  </data>
+  <data name="Action_FindRequestByIdHint" xml:space="preserve">
+    <value>Find request by ID</value>
+  </data>
+  <data name="Action_FindRequestByIdConfirmationMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Action_FindRequestByIdConfirmationDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FilterPanel_FlagInWork_ae4e1fcf2232441798488730b1890de3" xml:space="preserve">
+    <value>In work</value>
+  </data>
+  <data name="FilterPanel_FlagOnControl_a9773e535b4f4637a77ff7ed5f600170" xml:space="preserve">
+    <value>On control</value>
+  </data>
+  <data name="FilterPanel_FlagClosed_aa17b4157bd84170ae175db6ab06e4a7" xml:space="preserve">
+    <value>Closed</value>
+  </data>
+  <data name="FilterPanel_GroupFlagsFlagsList_c3455e3c8ba547a5bff1c0aee896474e" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FilterPanel_GroupFlags_cd6483586c6e4d2797a9af0d2b0608a8" xml:space="preserve">
+    <value>Status</value>
+  </data>
 </root>

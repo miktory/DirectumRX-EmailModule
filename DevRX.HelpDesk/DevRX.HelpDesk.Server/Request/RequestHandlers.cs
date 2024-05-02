@@ -8,6 +8,25 @@ using Sungero.Company;
 
 namespace DevRX.HelpDesk
 {
+  partial class RequestFilteringServerHandler<T>
+  {
+
+    public override IQueryable<T> Filtering(IQueryable<T> query, Sungero.Domain.FilteringEventArgs e)
+    {
+      // Проверка того, что панель фильтрации включена.
+      if (_filter == null)
+        return query;
+      // Контрол "Набор флажков". Фильтр по состоянию обращения.
+      // Возможные значения: В работе, На контроле, Закрыто.
+      if (_filter.FlagInWork || _filter.FlagOnControl || _filter.FlagClosed)
+        query = query.Where(r => (_filter.FlagInWork && r.LifeCycle.Equals(Request.LifeCycle.InWork)) ||
+                            (_filter.FlagOnControl && r.LifeCycle.Equals(Request.LifeCycle.OnControl)) ||
+                            (_filter.FlagClosed && r.LifeCycle.Equals(Request.LifeCycle.Closed)));
+      return query;
+    }
+  }
+
+
   partial class RequestServerHandlers
   {
 

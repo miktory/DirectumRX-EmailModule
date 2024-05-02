@@ -151,4 +151,25 @@
   <data name="Action_ShowRequestAddendumDescription" xml:space="preserve">
     <value>Показать приложения к обращению.</value>
   </data>
+  <data name="Action_FindRequestById" xml:space="preserve">
+    <value>Поиск обращения по номеру</value>
+  </data>
+  <data name="Action_FindRequestByIdHint" xml:space="preserve">
+    <value>Поиск обращения по номеру</value>
+  </data>
+  <data name="Action_FindRequestByIdDescription" xml:space="preserve">
+    <value>Поиск обращения по номеру</value>
+  </data>
+  <data name="FilterPanel_FlagInWork_ae4e1fcf2232441798488730b1890de3" xml:space="preserve">
+    <value>В работе</value>
+  </data>
+  <data name="FilterPanel_FlagOnControl_a9773e535b4f4637a77ff7ed5f600170" xml:space="preserve">
+    <value>На контроле</value>
+  </data>
+  <data name="FilterPanel_FlagClosed_aa17b4157bd84170ae175db6ab06e4a7" xml:space="preserve">
+    <value>Закрыто</value>
+  </data>
+  <data name="FilterPanel_GroupFlags_cd6483586c6e4d2797a9af0d2b0608a8" xml:space="preserve">
+    <value>Состояние</value>
+  </data>
 </root>
