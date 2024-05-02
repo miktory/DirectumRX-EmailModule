@@ -16,12 +16,22 @@ namespace DevRX.HelpDesk
       // Проверка того, что панель фильтрации включена.
       if (_filter == null)
         return query;
-      // Контрол "Набор флажков". Фильтр по состоянию обращения.
-      // Возможные значения: В работе, На контроле, Закрыто.
       if (_filter.FlagInWork || _filter.FlagOnControl || _filter.FlagClosed)
+        query = query.Where(r => (_filter.FlagInternal && InternalRequests.Is(r)) ||
+                            (_filter.FlagExternal && ExternalRequests.Is(r)) ||
+                            (_filter.FlagAll && Requests.Is(r)));
+      if (_filter.FlagInternal || _filter.FlagExternal || _filter.FlagAll)
         query = query.Where(r => (_filter.FlagInWork && r.LifeCycle.Equals(Request.LifeCycle.InWork)) ||
                             (_filter.FlagOnControl && r.LifeCycle.Equals(Request.LifeCycle.OnControl)) ||
                             (_filter.FlagClosed && r.LifeCycle.Equals(Request.LifeCycle.Closed)));
+      if (_filter.FlagMe)
+        query = query.Where(r => r.Responsible == Sungero.Company.Employees.Current);
+      if (_filter.FlagAllEmployees)
+        query = query.Select(r => r);
+      if (_filter.FlagSelectedEmployee)
+        query = query.Where(r => r.Responsible == _filter.Employee);
+      
+      
       return query;
     }
   }

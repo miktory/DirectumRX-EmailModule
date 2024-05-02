@@ -113,6 +113,79 @@
         "Name": "FlagClosed",
         "ParentGuid": "c3455e3c-8ba5-47a5-bff1-c0aee896474e",
         "PreviousGuid": "a9773e53-5b4f-4637-a77f-f7ed5f600170"
+      },
+      {
+        "$type": "Sungero.Metadata.FilterGroupMetadata, Sungero.Metadata",
+        "NameGuid": "33078173-cad9-4cc2-8713-f0bef9eb9348",
+        "Name": "Group",
+        "PreviousGuid": "cd648358-6c6e-4d27-97a9-af0d2b0608a8"
+      },
+      {
+        "$type": "Sungero.Metadata.FilterListMetadata, Sungero.Metadata",
+        "NameGuid": "d0f93a53-8578-47f9-b15e-9edfbc5d8fca",
+        "Name": "GroupFlagsList",
+        "ParentGuid": "33078173-cad9-4cc2-8713-f0bef9eb9348"
+      },
+      {
+        "$type": "Sungero.Metadata.FilterListItemMetadata, Sungero.Metadata",
+        "NameGuid": "4c20a067-d015-4641-a744-1d69bc97894d",
+        "Name": "FlagInternal",
+        "ParentGuid": "d0f93a53-8578-47f9-b15e-9edfbc5d8fca"
+      },
+      {
+        "$type": "Sungero.Metadata.FilterListItemMetadata, Sungero.Metadata",
+        "NameGuid": "a262241c-40a9-4449-9e1e-1bb112a43358",
+        "Name": "FlagExternal",
+        "ParentGuid": "d0f93a53-8578-47f9-b15e-9edfbc5d8fca",
+        "PreviousGuid": "4c20a067-d015-4641-a744-1d69bc97894d"
+      },
+      {
+        "$type": "Sungero.Metadata.FilterListItemMetadata, Sungero.Metadata",
+        "NameGuid": "f592fa11-8e72-4f45-9574-10a883c49961",
+        "Name": "FlagAll",
+        "ParentGuid": "d0f93a53-8578-47f9-b15e-9edfbc5d8fca",
+        "PreviousGuid": "a262241c-40a9-4449-9e1e-1bb112a43358"
+      },
+      {
+        "$type": "Sungero.Metadata.FilterGroupMetadata, Sungero.Metadata",
+        "NameGuid": "bb437f74-588a-4850-9cbd-750e190efa7d",
+        "Name": "Group1",
+        "PreviousGuid": "33078173-cad9-4cc2-8713-f0bef9eb9348"
+      },
+      {
+        "$type": "Sungero.Metadata.FilterListMetadata, Sungero.Metadata",
+        "NameGuid": "49be2924-6374-43ce-8e25-301d1d2655d5",
+        "Name": "Group1FlagsList",
+        "ParentGuid": "bb437f74-588a-4850-9cbd-750e190efa7d"
+      },
+      {
+        "$type": "Sungero.Metadata.FilterListItemMetadata, Sungero.Metadata",
+        "NameGuid": "981c53f9-ea33-46af-97ff-378e0bf1f848",
+        "Name": "FlagMe",
+        "ParentGuid": "49be2924-6374-43ce-8e25-301d1d2655d5"
+      },
+      {
+        "$type": "Sungero.Metadata.FilterListItemMetadata, Sungero.Metadata",
+        "NameGuid": "d715ba29-d11b-4d2e-be35-3d9fe29be786",
+        "Name": "FlagAllEmployees",
+        "ParentGuid": "49be2924-6374-43ce-8e25-301d1d2655d5",
+        "PreviousGuid": "981c53f9-ea33-46af-97ff-378e0bf1f848"
+      },
+      {
+        "$type": "Sungero.Metadata.FilterListItemMetadata, Sungero.Metadata",
+        "NameGuid": "99220c84-2ceb-47ac-a89c-2838a18cda2e",
+        "Name": "FlagSelectedEmployee",
+        "ParentGuid": "49be2924-6374-43ce-8e25-301d1d2655d5",
+        "PreviousGuid": "d715ba29-d11b-4d2e-be35-3d9fe29be786"
+      },
+      {
+        "$type": "Sungero.Metadata.FilterNavigationMetadata, Sungero.Metadata",
+        "NameGuid": "a0e3e08c-4236-4770-bd5f-062db1a49214",
+        "Name": "Employee",
+        "EntityGuid": "b7905516-2be5-4931-961c-cb38d5677565",
+        "MasterControlId": "99220c84-2ceb-47ac-a89c-2838a18cda2e",
+        "ParentGuid": "bb437f74-588a-4850-9cbd-750e190efa7d",
+        "PreviousGuid": "49be2924-6374-43ce-8e25-301d1d2655d5"
       }
     ],
     "IsAncestorMetadata": true,

@@ -25,8 +25,23 @@
   "FilterPanel": {
     "NameGuid": "b0125fbd-3b91-4dbb-914a-689276216404",
     "Name": "FilterPanel",
-    "Controls": [],
-    "IsAncestorMetadata": true
+    "Controls": [
+      {
+        "$type": "Sungero.Metadata.FilterListMetadata, Sungero.Metadata",
+        "NameGuid": "d0f93a53-8578-47f9-b15e-9edfbc5d8fca",
+        "Name": "GroupFlagsList",
+        "IsAncestorMetadata": true,
+        "IsVisible": false,
+        "Overridden": [
+          "IsVisible"
+        ],
+        "ParentGuid": "33078173-cad9-4cc2-8713-f0bef9eb9348"
+      }
+    ],
+    "IsAncestorMetadata": true,
+    "Overridden": [
+      "Controls"
+    ]
   },
   "Forms": [
     {

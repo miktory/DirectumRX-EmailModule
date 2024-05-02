@@ -15,7 +15,18 @@
   "FilterPanel": {
     "NameGuid": "b0125fbd-3b91-4dbb-914a-689276216404",
     "Name": "FilterPanel",
-    "Controls": [],
+    "Controls": [
+      {
+        "$type": "Sungero.Metadata.FilterGroupMetadata, Sungero.Metadata",
+        "NameGuid": "33078173-cad9-4cc2-8713-f0bef9eb9348",
+        "Name": "Group",
+        "IsAncestorMetadata": true,
+        "IsVisible": false,
+        "Overridden": [
+          "IsVisible"
+        ]
+      }
+    ],
     "IsAncestorMetadata": true
   },
   "Forms": [

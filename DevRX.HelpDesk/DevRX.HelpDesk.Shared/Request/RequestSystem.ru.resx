@@ -172,4 +172,31 @@
   <data name="FilterPanel_GroupFlags_cd6483586c6e4d2797a9af0d2b0608a8" xml:space="preserve">
     <value>Состояние</value>
   </data>
+  <data name="FilterPanel_Group_33078173cad94cc28713f0bef9eb9348" xml:space="preserve">
+    <value>Тип обращения</value>
+  </data>
+  <data name="FilterPanel_FlagInternal_4c20a067d0154641a7441d69bc97894d" xml:space="preserve">
+    <value>Внутренние</value>
+  </data>
+  <data name="FilterPanel_FlagExternal_a262241c40a944499e1e1bb112a43358" xml:space="preserve">
+    <value>Внешние</value>
+  </data>
+  <data name="FilterPanel_FlagAll_f592fa118e724f45957410a883c49961" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="FilterPanel_Group1_bb437f74588a48509cbd750e190efa7d" xml:space="preserve">
+    <value>Ответственный</value>
+  </data>
+  <data name="FilterPanel_FlagMe_981c53f9ea3346af97ff378e0bf1f848" xml:space="preserve">
+    <value>Я</value>
+  </data>
+  <data name="FilterPanel_FlagAllEmployees_d715ba29d11b4d2ebe353d9fe29be786" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="FilterPanel_FlagSelectedEmployee_99220c842ceb47aca89c2838a18cda2e" xml:space="preserve">
+    <value>Выбранный сотрудник</value>
+  </data>
+  <data name="FilterPanel_Employee_a0e3e08c42364770bd5f062db1a49214" xml:space="preserve">
+    <value>Сотрудник</value>
+  </data>
 </root>
