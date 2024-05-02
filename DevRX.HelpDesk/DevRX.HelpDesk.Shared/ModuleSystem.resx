@@ -67,4 +67,10 @@
   <data name="CoverDescription" xml:space="preserve">
     <value>Use this module to contact support.</value>
   </data>
+  <data name="JobDisplayName_242bc6ce2a094b5a8524ea546d7632cb" xml:space="preserve">
+    <value>Send notification about requests</value>
+  </data>
+  <data name="JobDescription_242bc6ce2a094b5a8524ea546d7632cb" xml:space="preserve">
+    <value>Send notification about requests</value>
+  </data>
 </root>

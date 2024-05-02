@@ -67,4 +67,10 @@
   <data name="CoverDescription" xml:space="preserve">
     <value>Используйте этот модуль для обращения в поддержку.</value>
   </data>
+  <data name="JobDisplayName_242bc6ce2a094b5a8524ea546d7632cb" xml:space="preserve">
+    <value>Отправка уведомлений о зарегистрированных обращениях</value>
+  </data>
+  <data name="JobDescription_242bc6ce2a094b5a8524ea546d7632cb" xml:space="preserve">
+    <value>Отправка уведомлений о зарегистрированных обращениях</value>
+  </data>
 </root>

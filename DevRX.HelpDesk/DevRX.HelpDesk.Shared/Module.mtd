@@ -31,6 +31,11 @@
       "IsSolutionModule": true,
       "MaxVersion": "",
       "MinVersion": ""
+    },
+    {
+      "Id": "92491aa6-c4df-4f46-a807-ebdd337bda74",
+      "MaxVersion": "",
+      "MinVersion": "1.1.0.0"
     }
   ],
   "ExplorerTreeOrder": [
@@ -63,6 +68,17 @@
   "InterfaceNamespace": "DevRX.HelpDesk",
   "IsolatedAssemblyName": "DevRX.HelpDesk.Isolated",
   "IsolatedNamespace": "DevRX.HelpDesk.Isolated",
+  "Jobs": [
+    {
+      "NameGuid": "242bc6ce-2a09-4b5a-8524-ea546d7632cb",
+      "Name": "SendNotificationAboutRequests",
+      "DaysOfWeekSchedule": "Friday",
+      "GenerateHandler": true,
+      "Monthly": "Weekly",
+      "MonthSchedule": "Monthly",
+      "StartAt": "1753-01-01T20:00:00"
+    }
+  ],
   "PublicStructures": [],
   "ResourceInterfaceAssemblyName": "Sungero.Domain.Interfaces",
   "ResourceInterfaceNamespace": "DevRX.HelpDesk",
