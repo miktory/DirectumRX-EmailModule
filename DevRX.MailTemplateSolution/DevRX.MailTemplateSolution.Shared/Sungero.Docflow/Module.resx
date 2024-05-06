@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MailTemplate" xml:space="preserve">
+    <value>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;style type="text/css"&gt;
+      body table tr td { border-collapse: collapse; vertical-align:text-top; } 
+    &lt;/style&gt;
+  &lt;/head&gt;
+{{&lt; hr}}
+&lt;hr size="1" width="99%" noshade="" style="color:#D0D0D0" align="center"&gt;
+{{/hr}}
+  &lt;body&gt;
+    &lt;img border="0" height="25" src="cid:logo.png@01D004A6.A303C580" /&gt;
+    &lt;p style="margin-bottom:0"&gt;
+      You have a {{#IsExpired}}expired{{/IsExpired}}{{^IsExpired}}new{{/IsExpired}}
+      {{#Sungero.Docflow.PublicFunctions.Module.GetAssignmentTypeName Assignment}}{{ToLower}}{{/Sungero.Docflow.PublicFunctions.Module.GetAssignmentTypeName}}.
+    &lt;/p&gt;
+    {{&gt; hr}}
+  &lt;table style="margin-left:15px;"&gt;
+    &lt;tr&gt;
+      &lt;td&gt;{{Sungero.Docflow.PublicFunctions.Module.GetAssignmentTypeName Assignment}}:&lt;/td&gt;
+      &lt;td&gt;&lt;a href="{{Sungero.Core.Hyperlinks.Get Assignment}}"&gt;{{Assignment.Subject}}&lt;/a&gt;&lt;/td&gt; 
+    &lt;/tr&gt;
+    {{#Subject}}
+      &lt;tr&gt;
+        &lt;td valign="top"&gt;Task subject:&lt;/td&gt;
+        &lt;td&gt;{{.}}&lt;/td&gt;
+      &lt;/tr&gt;
+    {{/Subject}}
+
+    {{#if HasSubstitutions}}
+    &lt;tr&gt;
+      &lt;td&gt;To:&lt;/td&gt;
+      &lt;td&gt;{{Assignment.Performer}}&lt;/td&gt; 
+    &lt;/tr&gt;
+    {{/if}}
+    {{#Author}}
+      &lt;tr&gt;
+        &lt;td&gt;From:&lt;/td&gt;
+        &lt;td&gt;{{.}}&lt;/td&gt;
+      &lt;/tr&gt;
+    {{/Author}}
+    {{#if Assignment.Deadline.HasValue}}
+    &lt;tr&gt;
+      &lt;td&gt;Дедлайн.:&lt;/td&gt;
+      &lt;td&gt;{{Sungero.Docflow.PublicFunctions.Module.GetDateDisplayValue Assignment.Deadline Assignment.Performer}}&lt;/td&gt;
+    &lt;/tr&gt;
+    {{/if}}
+    &lt;tr&gt; 
+      &lt;td&gt;Started:&lt;/td&gt;
+      &lt;td&gt;{{Sungero.Docflow.PublicFunctions.Module.GetDateDisplayValue Assignment.Created Assignment.Performer}}&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+  {{&gt; hr}}
+  &lt;p style="margin-bottom:0;margin-top:0"&gt;
+    {{#process_text Assignment.Task.ActiveText}}
+      {{#IsNewLine}}  
+       &lt;/p&gt;&lt;p style="margin-bottom:0;margin-top:0"&gt;
+      {{/IsNewLine}}
+      {{#IsHyperlink}}
+        &lt;a href = "{{Text}}"&gt;{{DisplayValue}}&lt;/a&gt;
+      {{/IsHyperlink}}
+      {{^IsHyperlink}}  
+        {{Text}}
+      {{/IsHyperlink}}
+    {{/process_text}}
+  &lt;/p&gt;
+  {{#if Assignment.Task.ActiveText}}
+    {{^Attachments}}
+      {{&gt; hr}}
+    {{/Attachments}}
+  {{/if}}
+  {{#if Attachments}}
+    &lt;p style="margin-bottom:0"&gt;
+      Attachments:
+    &lt;/p&gt;
+    {{#Attachments}} 
+      &lt;p style="margin-bottom:0;margin-top:0;margin-left:15px;"&gt;&amp;bull;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;a href="{{Sungero.Core.Hyperlinks.Get .}}"&gt;{{DisplayValue}}&lt;/a&gt;&lt;/p&gt;
+    {{/Attachments}}
+    &lt;/p&gt;
+    {{&gt; hr}}
+  {{/if}} 
+&lt;footer style="display:block"&gt;
+  &lt;p style="color:#808080;margin-top:0"&gt;
+    &lt;small&gt; Отправлено автоматически. &lt;a href="mailto:{{AdministratorEmail}}?subject=Unsubscribing%20from%20Directum%20RX%20mailing&amp;body=Unsubscribe%20me%20from%20{{&amp;MailingName}}" target="_top"&gt;Contact your administrator&lt;/a&gt; to unsubscribe from Directum RX mailing.&lt;/small&gt;
+  &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</value>
+  </data>
+</root>
