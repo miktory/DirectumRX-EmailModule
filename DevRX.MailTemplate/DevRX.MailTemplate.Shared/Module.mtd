@@ -1,0 +1,68 @@
+{
+  "$type": "Sungero.Metadata.ModuleMetadata, Sungero.Metadata",
+  "NameGuid": "5aa1f76d-8272-42b4-ad0d-c0a4c06c262c",
+  "Name": "MailTemplate",
+  "AsyncHandlers": [],
+  "ClientAssemblyName": "DevRX.MailTemplate.Client",
+  "ClientBaseAssemblyName": "DevRX.MailTemplate.ClientBase",
+  "ClientBaseNamespace": "DevRX.MailTemplate.ClientBase",
+  "ClientNamespace": "DevRX.MailTemplate.Client",
+  "Code": "MailTe1",
+  "CompanyCode": "DevRX",
+  "Cover": {
+    "NameGuid": "0da749b6-4650-4d39-a597-2c5462d4198b",
+    "Actions": [],
+    "Background": null,
+    "Footer": {
+      "NameGuid": "6743687b-5e7b-4144-a796-e33b8f1b6e97",
+      "BackgroundPosition": "Stretch"
+    },
+    "Groups": [],
+    "Header": {
+      "NameGuid": "fef38c4f-18b4-4714-8056-92c672548e89",
+      "BackgroundPosition": "Stretch"
+    },
+    "RemoteControls": [],
+    "Tabs": []
+  },
+  "Dependencies": [
+    {
+      "Id": "8200b398-2f93-4815-8c02-44baa77271a7",
+      "IsSolutionModule": true,
+      "MaxVersion": "",
+      "MinVersion": ""
+    }
+  ],
+  "ExplorerTreeOrder": [
+    {
+      "ItemId": "cfbad27a-5f1f-4be5-aa05-316bc5e9ab95"
+    }
+  ],
+  "IconResourcesKeys": [],
+  "Importance": "Medium",
+  "InterfaceAssemblyName": "Sungero.Domain.Interfaces",
+  "InterfaceNamespace": "DevRX.MailTemplate",
+  "IsolatedAssemblyName": "DevRX.MailTemplate.Isolated",
+  "IsolatedNamespace": "DevRX.MailTemplate.Isolated",
+  "PublicStructures": [],
+  "ResourceInterfaceAssemblyName": "Sungero.Domain.Interfaces",
+  "ResourceInterfaceNamespace": "DevRX.MailTemplate",
+  "ResourcesKeys": [],
+  "ServerAssemblyName": "DevRX.MailTemplate.Server",
+  "ServerNamespace": "DevRX.MailTemplate.Server",
+  "SharedAssemblyName": "DevRX.MailTemplate.Shared",
+  "SharedNamespace": "DevRX.MailTemplate.Shared",
+  "SpecialFolders": [],
+  "Version": "0.0.1.0",
+  "Widgets": [],
+  "Versions": [
+    {
+      "Type": "ModuleMetadata",
+      "Number": 8
+    },
+    {
+      "Type": "DomainApi",
+      "Number": 3
+    }
+  ]
+}
