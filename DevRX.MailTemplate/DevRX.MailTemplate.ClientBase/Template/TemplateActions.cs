@@ -11,7 +11,7 @@ namespace DevRX.MailTemplate.Client
   {
     public virtual void SelectTemplate(Sungero.Domain.Client.ExecuteActionArgs e)
     {
-      Functions.Template.Remote.ChangeTemplatesSelectionToFalse();
+      Functions.Template.Remote.ChangeTemplatesSelectionToFalse(_obj);
       _obj.IsSelected = true;
     }
 
