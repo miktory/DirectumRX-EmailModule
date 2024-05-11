@@ -14,7 +14,10 @@ namespace DevRX.MailTemplate.Server
     {
       var templates = Templates.GetAll();
       foreach (var template in templates)
+      {
         template.IsSelected = false;
+        template.Save();
+      }
     }
   }
 }
