@@ -13,11 +13,12 @@ namespace DevRX.MailTemplate.Client
     {
       Functions.Template.Remote.ChangeTemplatesSelectionToFalse(_obj);
       _obj.IsSelected = true;
+      _obj.Save();
     }
 
     public virtual bool CanSelectTemplate(Sungero.Domain.Client.CanExecuteActionArgs e)
     {
-      return true;
+      return !_obj.State.IsInserted;
     }
 
   }
