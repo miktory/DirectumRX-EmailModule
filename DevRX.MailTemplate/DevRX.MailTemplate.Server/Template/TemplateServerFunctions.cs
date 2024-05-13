@@ -19,5 +19,11 @@ namespace DevRX.MailTemplate.Server
         template.Save();
       }
     }
+    
+    [Public]
+    public ITemplate GetSelectedTemplate()
+    {
+      return Templates.GetAll(r => r.IsSelected == true).First();
+    }
   }
 }

@@ -67,12 +67,8 @@
       "PreviousItemId": "8932e8c0-c710-44ee-9032-e025eb037f49"
     },
     {
-      "ItemId": "5c85d859-35f8-46a9-bb21-57199aeb09cb",
-      "PreviousItemId": "bdc4d149-1c9d-4e05-acd1-224a656fd1f2"
-    },
-    {
       "ItemId": "6c4ec2aa-1bb6-4791-a441-8f4808c6f50b",
-      "PreviousItemId": "5c85d859-35f8-46a9-bb21-57199aeb09cb"
+      "PreviousItemId": "bdc4d149-1c9d-4e05-acd1-224a656fd1f2"
     }
   ],
   "HandledEvents": [

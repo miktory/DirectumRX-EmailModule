@@ -133,6 +133,20 @@
       "PreviousPropertyGuid": "41af422a-4bdf-4875-8505-4e4773a2abb4"
     }
   ],
+  "PublicFunctions": [
+    {
+      "Name": "GetSelectedTemplate",
+      "Parameters": [
+        {
+          "Name": "template",
+          "ParameterType": "global::DevRX.MailTemplate.ITemplate",
+          "ParameterTypeFullName": "DevRX.MailTemplate.ITemplate, Sungero.Domain.Interfaces"
+        }
+      ],
+      "ReturnType": "global::DevRX.MailTemplate.ITemplate",
+      "ReturnTypeFullName": "DevRX.MailTemplate.ITemplate, Sungero.Domain.Interfaces"
+    }
+  ],
   "PublicStructures": [],
   "ResourcesKeys": [],
   "RibbonCardMetadata": {

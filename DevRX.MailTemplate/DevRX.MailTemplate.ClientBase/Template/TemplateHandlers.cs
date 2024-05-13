@@ -7,8 +7,5 @@ using DevRX.MailTemplate.Template;
 
 namespace DevRX.MailTemplate
 {
-  partial class TemplateClientHandlers
-  {
 
-  }
 }

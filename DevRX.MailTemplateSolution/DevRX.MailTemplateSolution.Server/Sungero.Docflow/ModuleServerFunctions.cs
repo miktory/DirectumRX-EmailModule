@@ -45,6 +45,16 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
       SendSummaryMailNotification();
     }
     
+    public virtual string GenerateBody(IAssignmentBase assignment, bool isExpired, bool hasSubstitutions)
+    {
+      if (!Nustache.Core.Helpers.Contains("process_text"))
+        Nustache.Core.Helpers.Register("process_text", ProcessText);
+      
+      var model = this.GenerateBodyModel(assignment, isExpired, hasSubstitutions);
+      var template = MailTemplate.PublicFunctions.Template.GetSelectedTemplate(MailTemplate.Templates.Null);
+      return this.GetMailBodyAsHtml(template.HtmlTemplate, model);
+    }
+    
       public virtual void SendSummaryMailNotificationMessages(List<Sungero.Core.IEmailMessage> messages)
     {
       try
