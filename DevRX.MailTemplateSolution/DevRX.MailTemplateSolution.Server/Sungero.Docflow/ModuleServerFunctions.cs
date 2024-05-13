@@ -138,5 +138,21 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
       return mailingList;
     }
 
+   // Поглядеть
+     public virtual string GetSummaryMailNotificationMailBodyAsHtml(Structures.Module.IEmployeeMailInfo employeeMailInfo)
+    {
+      var employee = Employees.GetAll().Where(x => x.Id == employeeMailInfo.Id).FirstOrDefault();
+      var assignmentsBlockContent = this.GetSummaryMailNotificationAssignmentsAndNoticesContentBlockAsHtml(Sungero.Docflow.Resources.AssignmentsBlockName,
+                                                                                                           employeeMailInfo.AssignmentsAndNotices,
+                                                                                                           employee,
+                                                                                                           employeeMailInfo.PeriodLastDay);
+      var actionItemBlockContent = this.GetSummaryMailNotificationTasksContentBlockAsHtml(Sungero.Docflow.Resources.ActionItemsBlockName,
+                                                                                          employeeMailInfo.ActionItems);
+      var taskBlockContent = this.GetSummaryMailNotificationTasksContentBlockAsHtml(Sungero.Docflow.Resources.TasksBlockName,
+                                                                                    employeeMailInfo.Tasks);
+      var model = this.GenerateSummaryBodyModel(assignmentsBlockContent, actionItemBlockContent, taskBlockContent);
+      
+      return this.GetMailBodyAsHtml(Docflow.Resources.SummaryMailMainTemplate, model);
+    }
   }
 }
