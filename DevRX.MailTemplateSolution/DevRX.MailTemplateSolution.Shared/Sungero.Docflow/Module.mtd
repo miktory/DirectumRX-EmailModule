@@ -474,7 +474,8 @@
   "ResourceInterfaceAssemblyName": "Sungero.Domain.Interfaces",
   "ResourceInterfaceNamespace": "DevRX.MailTemplateSolution.Module.Docflow",
   "ResourcesKeys": [
-    "MailTemplate"
+    "MailTemplate",
+    "SummaryMailMainTemplate"
   ],
   "SpecialFolders": [],
   "Version": "4.9.141.0",

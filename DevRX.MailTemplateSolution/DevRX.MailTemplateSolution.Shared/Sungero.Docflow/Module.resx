@@ -149,4 +149,42 @@
 &lt;/body&gt;
 &lt;/html&gt;</value>
   </data>
+  <data name="SummaryMailMainTemplate" xml:space="preserve">
+    <value>&lt;!DOCTYPE html&gt;
+ &lt;html&gt;
+  &lt;head&gt;
+   &lt;style type="text/css"&gt;
+    p, span { font-size: 12pt; font-family: 'Times New Roman', Times; color: black; margin: 0px; }
+    p { margin-top: 4px; margin-bottom: 4px; }
+    td { padding: 0; word-break: break-all; }
+    table { table-layout: fixed; width: 95%; }
+   &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+   &lt;table&gt;
+    &lt;tbody&gt;
+     &lt;tr&gt;
+      &lt;td&gt;
+       &lt;img border="0" height="25" src="cid:logo.png@01D004A6.A303C580"/&gt;
+       &lt;p&gt;Сводка по текущим заданиям и задачам.&lt;/p&gt;
+      &lt;/td&gt;
+     &lt;/tr&gt;
+     {{{AssignmentsBlock}}}
+     {{{ActionItemsBlock}}}
+     {{{TasksBlock}}}
+     &lt;tr&gt;
+      &lt;td&gt;
+       &lt;hr size=1 noshade style='color:#D0D0D0' align=center&gt;
+        &lt;footer style="display:block"&gt;
+         &lt;p style="color:#808080;margin-top:0"&gt;
+          &lt;small&gt;Это сообщение отправлено автоматически. Чтобы отписаться от рассылки, отправьте &lt;a href="mailto:{{AdministratorEmail}}?subject=Отписка%20от%20рассылки%20Directum%20RX&amp;body=Прошу%20отписать%20меня%20от%20рассылки%20о%20текущих%20заданиях%20и%20задачах%20в%20виде%20сводки" target="_top"&gt;письмо администратору&lt;/a&gt;.&lt;/small&gt;
+         &lt;/p&gt;
+        &lt;/footer&gt;
+       &lt;/td&gt;
+      &lt;/tr&gt;
+     &lt;/tbody&gt;
+    &lt;/table&gt;
+   &lt;/body&gt;
+  &lt;/html&gt;</value>
+  </data>
 </root>

@@ -138,8 +138,17 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
       return mailingList;
     }
 
+      public virtual string GetMailBodyAsHtml(string template, System.Collections.Generic.Dictionary<string, object> model)
+    {
+      if (string.IsNullOrEmpty(template) || model == null)
+        return string.Empty;
+      
+      return Nustache.Core.Render.StringToString(template, model,
+                                                 new Nustache.Core.RenderContextBehaviour() { OnException = ex => Logger.Error(ex.Message, ex) });
+    }
+      
    // Поглядеть
-     public virtual string GetSummaryMailNotificationMailBodyAsHtml(Structures.Module.IEmployeeMailInfo employeeMailInfo)
+     public virtual string GetSummaryMailNotificationMailBodyAsHtml(Sungero.Docflow.Structures.Module.IEmployeeMailInfo employeeMailInfo)
     {
       var employee = Employees.GetAll().Where(x => x.Id == employeeMailInfo.Id).FirstOrDefault();
       var assignmentsBlockContent = this.GetSummaryMailNotificationAssignmentsAndNoticesContentBlockAsHtml(Sungero.Docflow.Resources.AssignmentsBlockName,
@@ -151,8 +160,8 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
       var taskBlockContent = this.GetSummaryMailNotificationTasksContentBlockAsHtml(Sungero.Docflow.Resources.TasksBlockName,
                                                                                     employeeMailInfo.Tasks);
       var model = this.GenerateSummaryBodyModel(assignmentsBlockContent, actionItemBlockContent, taskBlockContent);
-      
-      return this.GetMailBodyAsHtml(Docflow.Resources.SummaryMailMainTemplate, model);
+      var template = MailTemplate.PublicFunctions.Template.GetSelectedTemplate(MailTemplate.Templates.Null);
+      return this.GetMailBodyAsHtml(template.HtmlTemplate, model);
     }
   }
 }
