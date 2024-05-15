@@ -23,7 +23,8 @@ namespace DevRX.MailTemplate.Server
     [Public]
     public ITemplate GetSelectedTemplate()
     {
-      return Templates.GetAll(r => r.IsSelected == true).First();
+      var template = Templates.GetAll(r => r.IsSelected == true).First();
+      return template;
     }
   }
 }

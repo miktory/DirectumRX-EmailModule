@@ -45,7 +45,7 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
       SendSummaryMailNotification();
     }
     
-    public virtual string GenerateBody(IAssignmentBase assignment, bool isExpired, bool hasSubstitutions)
+    public override string GenerateBody(IAssignmentBase assignment, bool isExpired, bool hasSubstitutions)
     {
       if (!Nustache.Core.Helpers.Contains("process_text"))
         Nustache.Core.Helpers.Register("process_text", ProcessText);
@@ -55,7 +55,7 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
       return this.GetMailBodyAsHtml(template.HtmlTemplate, model);
     }
     
-      public virtual void SendSummaryMailNotificationMessages(List<Sungero.Core.IEmailMessage> messages)
+      public override void SendSummaryMailNotificationMessages(List<Sungero.Core.IEmailMessage> messages)
     {
       try
       {
@@ -79,7 +79,7 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
         }
       }
     }
-       public virtual void SendSummaryMailNotification()
+       public override void SendSummaryMailNotification()
     {
       var employeeInfos = this.CreateEmployeesMailInfoToSendSummaryNotification();
       if (!employeeInfos.Any())
@@ -103,7 +103,7 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
       }
     }
        
-   public virtual List<Sungero.Docflow.Structures.Module.IEmployeeMailInfo> CreateEmployeesMailInfoToSendSummaryNotification()
+   public override List<Sungero.Docflow.Structures.Module.IEmployeeMailInfo> CreateEmployeesMailInfoToSendSummaryNotification()
     {
       var employees = this.GetEmployeesToSendSummaryNotification();
       var substitutions = this.GetSubstitutionsToSendSummaryNotification(employees);
@@ -138,7 +138,7 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
       return mailingList;
     }
 
-      public virtual string GetMailBodyAsHtml(string template, System.Collections.Generic.Dictionary<string, object> model)
+      public override string GetMailBodyAsHtml(string template, System.Collections.Generic.Dictionary<string, object> model)
     {
       if (string.IsNullOrEmpty(template) || model == null)
         return string.Empty;
@@ -148,7 +148,7 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
     }
       
    // Поглядеть
-     public virtual string GetSummaryMailNotificationMailBodyAsHtml(Sungero.Docflow.Structures.Module.IEmployeeMailInfo employeeMailInfo)
+     public override string GetSummaryMailNotificationMailBodyAsHtml(Sungero.Docflow.Structures.Module.IEmployeeMailInfo employeeMailInfo)
     {
       var employee = Employees.GetAll().Where(x => x.Id == employeeMailInfo.Id).FirstOrDefault();
       var assignmentsBlockContent = this.GetSummaryMailNotificationAssignmentsAndNoticesContentBlockAsHtml(Sungero.Docflow.Resources.AssignmentsBlockName,
