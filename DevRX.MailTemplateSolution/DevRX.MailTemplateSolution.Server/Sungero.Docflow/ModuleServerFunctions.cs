@@ -51,7 +51,7 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
         Nustache.Core.Helpers.Register("process_text", ProcessText);
       
       var model = this.GenerateBodyModel(assignment, isExpired, hasSubstitutions);
-      var template = MailTemplate.PublicFunctions.Template.GetSelectedTemplate(MailTemplate.Templates.Null);
+      var template = MailTemplate.PublicFunctions.Template.GetSelectedTemplate(MailTemplate.Templates.Create());
       return this.GetMailBodyAsHtml(template.HtmlTemplate, model);
     }
     
@@ -160,7 +160,7 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
       var taskBlockContent = this.GetSummaryMailNotificationTasksContentBlockAsHtml(Sungero.Docflow.Resources.TasksBlockName,
                                                                                     employeeMailInfo.Tasks);
       var model = this.GenerateSummaryBodyModel(assignmentsBlockContent, actionItemBlockContent, taskBlockContent);
-      var template = MailTemplate.PublicFunctions.Template.GetSelectedTemplate(MailTemplate.Templates.Null);
+      var template = MailTemplate.PublicFunctions.Template.GetSelectedTemplate(MailTemplate.Templates.Create());
       return this.GetMailBodyAsHtml(template.HtmlTemplate, model);
     }
   }

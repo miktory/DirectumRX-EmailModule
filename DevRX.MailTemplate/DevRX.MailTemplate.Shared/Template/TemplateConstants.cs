@@ -6,5 +6,7 @@ namespace DevRX.MailTemplate.Constants
   public static class Template
   {
 
+
+
   }
 }
