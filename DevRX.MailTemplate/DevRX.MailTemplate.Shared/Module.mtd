@@ -44,6 +44,29 @@
   "InterfaceNamespace": "DevRX.MailTemplate",
   "IsolatedAssemblyName": "DevRX.MailTemplate.Isolated",
   "IsolatedNamespace": "DevRX.MailTemplate.Isolated",
+  "PublicFunctions": [
+    {
+      "Name": "SendMailByTemplate",
+      "Parameters": [
+        {
+          "Name": "eMail",
+          "ParameterType": "global::System.String",
+          "ParameterTypeFullName": "System.String"
+        },
+        {
+          "Name": "template",
+          "ParameterType": "global::System.String",
+          "ParameterTypeFullName": "System.String"
+        },
+        {
+          "Name": "model",
+          "ParameterType": "System.Collections.Generic.Dictionary<global::System.String, System.Object>"
+        }
+      ],
+      "ReturnType": "void",
+      "ReturnTypeFullName": "System.Void"
+    }
+  ],
   "PublicStructures": [],
   "ResourceInterfaceAssemblyName": "Sungero.Domain.Interfaces",
   "ResourceInterfaceNamespace": "DevRX.MailTemplate",

@@ -464,6 +464,43 @@
   "NeedResetAppliedCache": true,
   "PublicFunctions": [
     {
+      "Name": "GetMailBodyAsHtml",
+      "Parameters": [
+        {
+          "Name": "template",
+          "ParameterType": "global::System.String",
+          "ParameterTypeFullName": "System.String"
+        },
+        {
+          "Name": "model",
+          "ParameterType": "System.Collections.Generic.Dictionary<global::System.String, System.Object>"
+        }
+      ],
+      "ReturnType": "global::System.String",
+      "ReturnTypeFullName": "System.String"
+    },
+    {
+      "Name": "SendMailByTemplate",
+      "Parameters": [
+        {
+          "Name": "eMail",
+          "ParameterType": "global::System.String",
+          "ParameterTypeFullName": "System.String"
+        },
+        {
+          "Name": "template",
+          "ParameterType": "global::System.String",
+          "ParameterTypeFullName": "System.String"
+        },
+        {
+          "Name": "model",
+          "ParameterType": "System.Collections.Generic.Dictionary<global::System.String, System.Object>"
+        }
+      ],
+      "ReturnType": "void",
+      "ReturnTypeFullName": "System.Void"
+    },
+    {
       "Name": "Test",
       "Placement": "Client",
       "ReturnType": "void",
