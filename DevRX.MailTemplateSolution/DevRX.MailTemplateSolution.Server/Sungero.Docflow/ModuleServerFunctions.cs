@@ -23,6 +23,7 @@ using Sungero.Metadata;
 using Sungero.Parties;
 using Sungero.Workflow;
 using Sungero.Docflow.Structures;
+using Sungero.Docflow;
 using AppMonitoringType = Sungero.Content.AssociatedApplication.MonitoringType;
 using ArioTaskStates = Sungero.SmartProcessing.PublicConstants.Module.ProcessingTaskStates;
 using ExchDocumentType = Sungero.Exchange.ExchangeDocumentInfoServiceDocuments.DocumentType;
@@ -156,6 +157,59 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
       var model = this.GenerateSummaryBodyModel(assignmentsBlockContent, actionItemBlockContent, taskBlockContent);
       var template = MailTemplate.PublicFunctions.Template.GetSelectedTemplate(MailTemplate.Templates.Create());
       return this.GetMailBodyAsHtml(template.HtmlTemplate, model);
+    }
+     
+       /// <summary>
+    /// Получить содержание блока сводки с заданиями и уведомлениями в виде HTML.
+    /// </summary>
+    /// <param name="blockName">Заголовок блока.</param>
+    /// <param name="assignmentsAndNotices">Задания и уведомлния.</param>
+    /// <param name="employee">Сотрудник для которого формируется сводка.</param>
+    /// <param name="periodLastDay">Срок, после которого задание не должно попадать в сводку.</param>
+    /// <returns>Содержание блока сводки с заданиями и уведомлениями в виде HTML.</returns>
+    public override string GetSummaryMailNotificationAssignmentsAndNoticesContentBlockAsHtml(string blockName,
+                                                                                            List<Sungero.Docflow.Structures.Module.IWorkflowEntityMailInfo> assignmentsAndNotices,
+                                                                                            IEmployee employee,
+                                                                                            DateTime? periodLastDay)
+    {
+      if (assignmentsAndNotices == null || !assignmentsAndNotices.Any())
+        return string.Empty;
+      
+      var assignmentsAndNoticesCount = 0;
+      var groupsContent = new List<string>();
+      var groups = this.GetSummaryMailNotificationAssignmentsAndNoticesGroups(assignmentsAndNotices, employee, periodLastDay);
+      foreach (var group in groups)
+        if (group.Value.Any())
+      {
+        groupsContent.Add(this.GetSummaryMailNotificationGroupContentAsHtml(group.Key, group.Value.OrderByDescending(a => a.Created).ToList()));
+        assignmentsAndNoticesCount += group.Value.Count;
+      }
+      
+      if (!groupsContent.Any())
+        return string.Empty;
+      
+      var groupContent = string.Join(Environment.NewLine, groupsContent);
+      var model = this.GenerateBlockContentModel(blockName, groupContent, assignmentsAndNoticesCount, false, 0);
+      
+      return this.GetMailBodyAsHtml(Docflow.Resources.SummaryMailBlockContentTemplate, model);
+    }
+    
+       /// <summary>
+    /// Получить содержание группы в виде HTML.
+    /// </summary>
+    /// <param name="name">Название группы.</param>
+    /// <param name="entities">Список информации о сущностях.</param>
+    /// <returns>Содержание группы в виде HTML.</returns>
+    public override string GetSummaryMailNotificationGroupContentAsHtml(string name, List<Sungero.Docflow.Structures.Module.IWorkflowEntityMailInfo> entities)
+    {
+      var entitiesGroupContent = this.GetSummaryMailNotificationWorkflowEntitiesListContentAsHtml(entities);
+      var leftMarginSize = this.GetSummaryMailLeftMarginSize();
+      var model = this.GenerateBlockContentModel(name, entitiesGroupContent, entities.Count, true, leftMarginSize);
+      var template = MailTemplate.Templates.GetAll(r => Equals(r.Name, "SummaryMailGroupContentTemplate")).FirstOrDefault();
+      if (template == MailTemplate.Templates.Null)
+        return this.GetMailBodyAsHtml(Docflow.Resources.SummaryMailGroupContentTemplate, model);
+      else 
+        return this.GetMailBodyAsHtml(template.HtmlTemplate, model);
     }
   }
 }
