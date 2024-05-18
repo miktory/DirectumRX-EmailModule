@@ -45,19 +45,29 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
       return this.GetMailBodyAsHtml(template.HtmlTemplate, model);
     }
     
-    
+    /// <summary>
+    /// Отправить электронное письмо одному или нескольким получателям.
+    /// </summary>
+    /// <param name="eMail">Почта получателя письма.</param>
+    /// <param name="copyRecipients">Список почт получателей копии письма.</param>
+    /// <param name="subject">Тема письма.</param>
+    /// <param name="template">HTML-шаблон.</param>
+    /// <param name="documents">Вложения к письму.</param>
+    /// <param name="dataSource">Источник информации для HTML-шаблона.</param>
+    /// <returns>True - если письмо отправлено. False - если письмо не отправлено.</returns>
     [Public, Remote]
-    public void SendMailByTemplate(string eMail, List<string> copyRecipients, string subject, string template, List<Sungero.Content.IElectronicDocument> documents, Sungero.Content.IElectronicDocument dataSource)
+    public bool SendMailByTemplate(string eMail, List<string> copyRecipients, string subject, string template, List<Sungero.Content.IElectronicDocument> documents, Sungero.Content.IElectronicDocument dataSource)
     {
       var message = Mail.CreateMailMessage();
       this.AddLogo(message);
       var model = new Dictionary<string, object>();
       var body = dataSource == Sungero.Content.ElectronicDocuments.Null ? this.GetMailBodyAsHtml(template, model) : Nustache.Core.Render.StringToString(template, dataSource,
-                                                 new Nustache.Core.RenderContextBehaviour() { OnException = ex => Logger.Error(ex.Message, ex) });
+                                                                                                                                                        new Nustache.Core.RenderContextBehaviour() { OnException = ex => Logger.Error(ex.Message, ex) });
       message.Body = body;
       message.IsBodyHtml = true;
       message.Subject = subject;
       message.To.Add(eMail);
+      message.CC.AddRange(copyRecipients);
       foreach (var doc in documents)
       {
         try
@@ -66,18 +76,20 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
         }
         catch (Exception ex)
         {
-          
+          return false;
         }
       }
-      message.CC.AddRange(copyRecipients);
       
-      try {
+      try 
+      {
         Mail.Send(message);
       }
       catch (Exception Ex)
       {
-        Mail.Send(message);
+        return false;
       }
+      
+      return true;
     }
     
       public override void SendSummaryMailNotificationMessages(List<Sungero.Core.IEmailMessage> messages)
