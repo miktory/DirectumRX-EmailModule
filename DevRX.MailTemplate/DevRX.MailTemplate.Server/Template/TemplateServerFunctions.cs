@@ -9,21 +9,6 @@ namespace DevRX.MailTemplate.Server
 {
   partial class TemplateFunctions
   {
-    [Remote(IsPure=true)]
-    public void ChangeTemplatesSelectionToFalse()
-    {
-      var templates = Templates.GetAll();
-      foreach (var template in templates)
-      {
-        template.IsSelected = false;
-        template.Save();
-      }
-    }
     
-    [Public]
-    public ITemplate GetSelectedTemplate()
-    {
-      return Templates.GetAll(r => r.IsSelected == true).First();
-    }
   }
 }

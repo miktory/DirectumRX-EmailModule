@@ -39,16 +39,66 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
     [Public, Remote]
     public void Test1()
     {
-        this.SendSummaryMailNotification();
+        this.SendMailNotification();
     }
+    
     public override string GenerateBody(IAssignmentBase assignment, bool isExpired, bool hasSubstitutions)
     {
       if (!Nustache.Core.Helpers.Contains("process_text"))
         Nustache.Core.Helpers.Register("process_text", ProcessText);
       
       var model = this.GenerateBodyModel(assignment, isExpired, hasSubstitutions);
-      var template = MailTemplate.PublicFunctions.Template.GetSelectedTemplate(MailTemplate.Templates.Create());
-      return this.GetMailBodyAsHtml(template.HtmlTemplate, model);
+      var template = MailTemplate.Templates.GetAll(r => Equals(r.Name, "MailTemplate")).FirstOrDefault();
+      if (template == MailTemplate.Templates.Null)
+        return this.GetMailBodyAsHtml(Docflow.Resources.MailTemplate, model);
+      else
+        return this.GetMailBodyAsHtml(template.HtmlTemplate, model);
+    }
+       
+           /// <summary>
+    /// Запустить рассылку по новым заданиям.
+    /// </summary>
+    /// <param name="previousRun">Дата прошлого запуска рассылки.</param>
+    /// <param name="notificationDate">Дата текущей рассылки.</param>
+    /// <param name="assignments">Задания, по которым будет выполнена рассылка.</param>
+    /// <returns>True, если хотя бы одно письмо было отправлено, иначе - false.</returns>
+    public bool? TrySendNewAssignmentsMailing1(DateTime previousRun, DateTime notificationDate, List<IAssignmentBase> assignments)
+    {
+      Logger.Debug("Checking new assignments for mailing");
+      var hasErrors = false;
+
+      var anyMailSent = false;
+      foreach (var assignment in assignments)
+      {
+        var employee = Employees.As(assignment.Performer);
+        if (employee == null)
+          continue;
+
+        var endDate = assignment.Created.Value.AddDays(-1);
+        var substitutions = Substitutions.GetAll(s => Equals(s.User, employee))
+          .Where(s => s.IsSystem != true)
+          .Where(s => s.StartDate == null || s.StartDate.Value <= assignment.Created)
+          .Where(s => s.EndDate == null || s.EndDate.Value >= endDate);
+        
+        var substitutes = Employees.GetAll(r => r.NeedNotifyNewAssignments == true)
+          .Where(e => substitutions.Any(s => Equals(s.Substitute, e)))
+          .Where(e => e.Status != Sungero.CoreEntities.DatabookEntry.Status.Closed)
+          .ToList();
+        
+        var subject = this.GetNewAssignmentSubject(assignment);
+        var mailSent = this.TrySendMailByAssignment(assignment, subject, false, employee, substitutes);
+        if (!mailSent.IsSuccess)
+          hasErrors = true;
+        if (mailSent.IsSuccess && mailSent.AnyMailSended)
+          anyMailSent = true;
+      }
+      if (!assignments.Any())
+        Logger.Debug("No new assignments for mailing");
+      else if (!anyMailSent)
+        Logger.Debug("No subscribers for new assignments mailing");
+      if (!anyMailSent && !hasErrors)
+        return null;
+      return anyMailSent || !hasErrors;
     }
     
     /// <summary>
@@ -97,54 +147,7 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
       
       return true;
     }
-    
-      public override void SendSummaryMailNotificationMessages(List<Sungero.Core.IEmailMessage> messages)
-    {
-      try
-      {
-        Mail.Send(messages);
-      }
-      catch (Exception ex)
-      {
-        this.SummaryMailLogError("Email messages sending failed. Try send messages one by one", ex);
-        foreach (var mail in messages)
-        {
-          try
-          {
-            // Переполучить сообщение для корректной отправки.
-            Mail.Send(this.GetSummaryMailNotificationMessage(mail.Subject, mail.To.ToList(), mail.CC.ToList(), mail.Body));
-          }
-          catch (Exception exception)
-          {
-            var mailTo = string.Join(", ", mail.To);
-            this.SummaryMailLogError(string.Format("Email message to {0} sending failed", mailTo), exception);
-          }
-        }
-      }
-    }
-       public override void SendSummaryMailNotification()
-    {
-      var employeeInfos = this.CreateEmployeesMailInfoToSendSummaryNotification();
-      if (!employeeInfos.Any())
-      {
-        this.SummaryMailLogDebug("There are no employees who need to send a summary");
-        return;
-      }
-      
-      var mailMessages = this.GetMailMessages(employeeInfos);
-      
-      var sentMessagesCount = 0;
-      var bunchSize = (int)Sungero.Docflow.PublicFunctions.Module.Remote.GetDocflowParamsNumbericValue(Sungero.Docflow.Constants.Module.SummaryMailNotificationsBunchCountParamName);
-      if (bunchSize <= 0)
-        bunchSize = Sungero.Docflow.Constants.Module.SummaryMailNotificationsBunchCount;
-      
-      while (sentMessagesCount < mailMessages.Count())
-      {
-        var sentMessagesBunch = mailMessages.Skip(sentMessagesCount).Take(bunchSize).ToList();
-        SendSummaryMailNotificationMessages(sentMessagesBunch);
-        sentMessagesCount += bunchSize;
-      }
-    }
+  
        
           
  /// <summary>
