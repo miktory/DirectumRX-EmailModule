@@ -37,11 +37,16 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Client
     {
       var dialog = Dialogs.CreateInputDialog("Отправить письмо");
       var email = dialog.AddString("E-Mail",true);
-      var documents = dialog.AddSelectMany("Документ", true, Sungero.Content.ElectronicDocuments.Null);
+      var documents = dialog.AddSelectMany("Документ", false, Sungero.Content.ElectronicDocuments.Null);
       var template = dialog.AddSelect("Шаблон пиьсма", true, MailTemplate.Templates.Null);
-      dialog.Show();
       if (dialog.Show() == DialogButtons.Ok)
+      {
+        try
+        {
         Functions.Module.Remote.SendMailByTemplate(email.Value,template.Value.HtmlTemplate,documents.Value.ToList());
+        }
+        catch {}
+      }
       
     }
     
