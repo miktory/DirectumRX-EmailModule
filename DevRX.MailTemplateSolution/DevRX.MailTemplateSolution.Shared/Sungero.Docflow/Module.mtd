@@ -465,7 +465,7 @@
   "PublicFunctions": [
     {
       "Name": "SendMail",
-      "Placement": "Shared",
+      "Placement": "Client",
       "ReturnType": "void",
       "ReturnTypeFullName": "System.Void"
     },

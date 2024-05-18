@@ -21,7 +21,7 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Client
       
     }
     
-    [Public, Remote(IsPure=true), RemoteLocalizeFunction("Отправка письма", "Отправка письма из шаблона с возможностью импорта данных документа и добавления вложений")]
+    [Public, LocalizeFunction("Отправка письма", "Отправка письма из шаблона с возможностью импорта данных документа и добавления вложений")]
     public virtual void SendMail()
     {
       var dialog = Dialogs.CreateInputDialog("Отправить письмо");
@@ -66,7 +66,7 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Client
           }
         }
       }
-      
     }
+    
   }
 }
