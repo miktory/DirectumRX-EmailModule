@@ -45,7 +45,7 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
     //  SendSummaryMailNotification();
     var template = MailTemplate.PublicFunctions.Template.GetSelectedTemplate(MailTemplate.Templates.Create());
      var model = new Dictionary<string, object>();
-     SendMailByTemplate1("distancemezhin@gmail.com",template.HtmlTemplate,model);
+     SendMailByTemplate("distancemezhin@gmail.com",template.HtmlTemplate,model);
     }
     
     public override string GenerateBody(IAssignmentBase assignment, bool isExpired, bool hasSubstitutions)
@@ -66,12 +66,12 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
     }
     
       [Public]
-    public void SendMailByTemplate1(string eMail, string template, System.Collections.Generic.Dictionary<string, object> model)
+    public void SendMailByTemplate(string eMail, string template, System.Collections.Generic.Dictionary<string, object> model)
     {
       var message = Mail.CreateMailMessage();
       this.AddLogo(message);
       var body = GetMailBodyAsHtml(template, model);
-
+      //MailTemplateSolution.Module.Docflow.PublicFunctions.Module.GetAttachment();
       message.Body = body;
       message.IsBodyHtml = true;
       message.Subject = "Тестовое Письмо";
@@ -79,11 +79,17 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
      // message.CC.AddRange(copy);
      
    //MailTemplateSolution.Module.Docflow.PublicFunctions.AddLogo(message);
-      var fileStream = File.OpenRead(@"C:\Users\DirectumRobot\Downloads\windowsdesktop-runtime-6.0.29-win-x64.exe");
-      var attachmentName = Path.GetFileName(@"C:\Users\DirectumRobot\Downloads\windowsdesktop-runtime-6.0.29-win-x64.exe");
+   //   var fileStream = File.OpenRead(@"C:\Users\DirectumRobot\Downloads\windowsdesktop-runtime-6.0.29-win-x64.exe");
+  //    var attachmentName = Path.GetFileName(@"C:\Users\DirectumRobot\Downloads\windowsdesktop-runtime-6.0.29-win-x64.exe");
       // Добавить вложение в виде потока с данными из файла в письмо.
-      message.AddAttachment(fileStream, attachmentName);
+   //   message.AddAttachment(fileStream, attachmentName);
+      try {
       Mail.Send(message);
+      }
+      catch (Exception Ex)
+      {
+        Mail.Send(message);
+      }
     }
     
       public override void SendSummaryMailNotificationMessages(List<Sungero.Core.IEmailMessage> messages)
@@ -179,25 +185,6 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
                                                 new Nustache.Core.RenderContextBehaviour() { OnException = ex => Logger.Error(ex.Message, ex) });
    }
       
-        [Public]
-    public void SendMailByTemplate(string eMail, string template, System.Collections.Generic.Dictionary<string, object> model)
-    {
-      var message = Mail.CreateMailMessage();
-      var body = MailTemplateSolution.Module.Docflow.PublicFunctions.Module.GetMailBodyAsHtml(template, model);
-
-      message.Body = body;
-      message.IsBodyHtml = true;
-      message.Subject = "Тестовое Письмо";
-      message.To.Add(eMail);
-     // message.CC.AddRange(copy);
-     
-      this.AddLogo(message);
-    //  var fileStream = File.OpenRead(@"C:\Users\DirectumRobot\Downloads\windowsdesktop-runtime-6.0.29-win-x64.exe");
-    //  var attachmentName = Path.GetFileName(@"C:\Users\DirectumRobot\Downloads\windowsdesktop-runtime-6.0.29-win-x64.exe");
-      // Добавить вложение в виде потока с данными из файла в письмо.
-     // message.AddAttachment(fileStream, attachmentName);
-      Mail.Send(message);
-    }
           
    // Поглядеть
      public override string GetSummaryMailNotificationMailBodyAsHtml(Sungero.Docflow.Structures.Module.IEmployeeMailInfo employeeMailInfo)
