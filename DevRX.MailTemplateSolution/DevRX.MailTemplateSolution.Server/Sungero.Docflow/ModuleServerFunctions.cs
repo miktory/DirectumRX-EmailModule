@@ -39,7 +39,7 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
     [Public, Remote]
     public void Test1()
     {
-      MailTemplate.PublicFunctions.Template.CreateSystemTemplates(MailTemplate.Templates.Null);
+      MailTemplate.PublicFunctions.Template.CreateSystemTemplates(MailTemplate.Templates.Create());
     }
     
     public override string GenerateBody(IAssignmentBase assignment, bool isExpired, bool hasSubstitutions)

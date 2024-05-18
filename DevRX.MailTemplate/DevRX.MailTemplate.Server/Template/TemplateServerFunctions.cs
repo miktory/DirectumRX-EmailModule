@@ -30,12 +30,12 @@ namespace DevRX.MailTemplate.Server
       var summaryMailBlockContentTemplate = templates.Where(x => x.Name == "SummaryMailBlockContentTemplate" && x.IsSystem.Equals(true)).FirstOrDefault();
       if (summaryMailBlockContentTemplate == Templates.Null)
       {
-        summaryMailMainTemplate = CreateSystemTemplate("SummaryMailBlockContentTemplate", Sungero.Docflow.Resources.SummaryMailBlockContentTemplate);
-        summaryMailMainTemplate.Save();
+        summaryMailBlockContentTemplate = CreateSystemTemplate("SummaryMailBlockContentTemplate", Sungero.Docflow.Resources.SummaryMailBlockContentTemplate);
+        summaryMailBlockContentTemplate.Save();
       }
       
       var summaryMailGroupContentTemplate = templates.Where(x => x.Name == "SummaryMailGroupContentTemplate" && x.IsSystem.Equals(true)).FirstOrDefault();
-      if (summaryMailBlockContentTemplate == Templates.Null)
+      if (summaryMailGroupContentTemplate == Templates.Null)
       {
         summaryMailGroupContentTemplate = CreateSystemTemplate("SummaryMailGroupContentTemplate", Sungero.Docflow.Resources.SummaryMailGroupContentTemplate);
         summaryMailGroupContentTemplate.Save();
@@ -46,7 +46,7 @@ namespace DevRX.MailTemplate.Server
     {
         var template = Templates.Create();
         template.HtmlTemplate = htmlText;
-        template.Name = "SummaryMailBlockContentTemplate";
+        template.Name = name;
         template.IsSystem = true;
         return template;
     }
