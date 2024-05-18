@@ -16,18 +16,19 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Client
     [Public]
     public void Test()
     {
-      CreateSendMailDialog();
+      SendMail();
       //Functions.Module.Remote.Test();
       
     }
     
-    [LocalizeFunction("Отправка письма", "Отправка письма")]
-    public virtual void CreateSendMailDialog()
+    [Public, Remote(IsPure=true), RemoteLocalizeFunction("Отправка письма", "Отправка письма из шаблона с возможностью импорта данных документа и добавления вложений")]
+    public virtual void SendMail()
     {
       var dialog = Dialogs.CreateInputDialog("Отправить письмо");
       var email = dialog.AddString("E-Mail",true);
       var subject = dialog.AddString("Тема письма",true);
       var documents = dialog.AddSelectMany("Документ", false, Sungero.Content.ElectronicDocuments.Null);
+      var copyRecipients = dialog.AddSelectMany("Получатели копии", false, Sungero.Parties.People.Null);
       var dataSource = dialog.AddSelect("Источник данных", false, Sungero.Content.ElectronicDocuments.Null);
       var template = dialog.AddSelect("Шаблон письма", true, MailTemplate.Templates.Null);
       if (dialog.Show() == DialogButtons.Ok)
@@ -35,17 +36,28 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Client
         bool isConfirmed = Dialogs.CreateConfirmDialog("Отправить письмо?").Show();
         if (isConfirmed)
         {
+          foreach (var person in copyRecipients.Value)
+          {
+            if (String.IsNullOrEmpty(person.Email))
+            {
+              Dialogs.ShowMessage("У одного или нескольких получателей не указан E-Mail.", MessageType.Error);
+              return;
+            }
+              
+          }
           foreach (var doc in documents.Value)
           {
             if (doc.LastVersion == null)
             {
-              Dialogs.ShowMessage("Ошибка. Один или несколько документов не имеют созданной версии.", MessageType.Error);
+              Dialogs.ShowMessage("Один или несколько документов не имеют созданной версии.", MessageType.Error);
               return;
             }
           }
+          var copyRecipientsEmails = copyRecipients.Value.Select(x => x.Email).ToList();
           try
           {
-            Functions.Module.Remote.SendMailByTemplate(email.Value,subject.Value,template.Value.HtmlTemplate,documents.Value.ToList(), dataSource.Value);
+            Functions.Module.Remote.SendMailByTemplate(email.Value, copyRecipientsEmails, subject.Value, 
+                                                       template.Value.HtmlTemplate, documents.Value.ToList(), dataSource.Value);
             Dialogs.ShowMessage("Письмо отправлено.", MessageType.Information);
           }
           catch

@@ -35,19 +35,6 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
 {
   partial class ModuleFunctions
   {
-
-    /// <summary>
-    /// 
-    /// </summary>
-    [Remote]
-    public virtual void Test()
-    {
-    //  SendSummaryMailNotification();
-    var template = MailTemplate.PublicFunctions.Template.GetSelectedTemplate(MailTemplate.Templates.Create());
-     var model = new Dictionary<string, object>();
-    // SendMailByTemplate("distancemezhin@gmail.com",template.HtmlTemplate,model);
-    }
-    
     public override string GenerateBody(IAssignmentBase assignment, bool isExpired, bool hasSubstitutions)
     {
       if (!Nustache.Core.Helpers.Contains("process_text"))
@@ -60,11 +47,11 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
     
     
     [Public, Remote]
-    public void SendMailByTemplate(string eMail, string subject, string template, List<Sungero.Content.IElectronicDocument> documents, Sungero.Content.IElectronicDocument dataSource)
+    public void SendMailByTemplate(string eMail, List<string> copyRecipients, string subject, string template, List<Sungero.Content.IElectronicDocument> documents, Sungero.Content.IElectronicDocument dataSource)
     {
       var message = Mail.CreateMailMessage();
       this.AddLogo(message);
-      var model = new Dictionary<string,object>();
+      var model = new Dictionary<string, object>();
       var body = dataSource == Sungero.Content.ElectronicDocuments.Null ? this.GetMailBodyAsHtml(template, model) : Nustache.Core.Render.StringToString(template, dataSource,
                                                  new Nustache.Core.RenderContextBehaviour() { OnException = ex => Logger.Error(ex.Message, ex) });
       message.Body = body;
@@ -82,7 +69,7 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
           
         }
       }
-      // message.CC.AddRange(copy);
+      message.CC.AddRange(copyRecipients);
       
       try {
         Mail.Send(message);

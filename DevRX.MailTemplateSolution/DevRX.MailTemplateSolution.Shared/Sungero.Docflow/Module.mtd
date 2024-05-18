@@ -464,6 +464,12 @@
   "NeedResetAppliedCache": true,
   "PublicFunctions": [
     {
+      "Name": "SendMail",
+      "Placement": "Shared",
+      "ReturnType": "void",
+      "ReturnTypeFullName": "System.Void"
+    },
+    {
       "Name": "SendMailByTemplate",
       "IsRemote": true,
       "Parameters": [
@@ -471,6 +477,11 @@
           "Name": "eMail",
           "ParameterType": "global::System.String",
           "ParameterTypeFullName": "System.String"
+        },
+        {
+          "Name": "copyRecipients",
+          "ParameterType": "global::System.Collections.Generic.List<global::System.String>",
+          "ParameterTypeFullName": "System.Collections.Generic.List"
         },
         {
           "Name": "subject",
