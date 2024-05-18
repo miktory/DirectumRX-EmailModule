@@ -13,7 +13,7 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Client
     /// Отправить электронное письмо одному или нескольким получателям.
     /// </summary>
     /// <returns>True - если письмо отправлено. False - если письмо не отправлено.</returns>
-    [Public, LocalizeFunction("Отправка письма", "Отправка письма из шаблона с возможностью импорта данных документа и добавления вложений")]
+    [Public]
     public virtual bool SendMail()
     {
       var dialog = Dialogs.CreateInputDialog("Отправить письмо");

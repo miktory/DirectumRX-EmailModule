@@ -13,7 +13,7 @@ namespace DevRX.MailTemplate.Client
     /// Отправить электронное письмо одному или нескольким получателям.
     /// </summary>
     /// 
-    [Public]
+    [Public, LocalizeFunction("Отправка письма", "Отправка письма из шаблона с возможностью импорта данных документа и добавления вложений")]
     public virtual void SendMail()
     {
       MailTemplateSolution.Module.Docflow.PublicFunctions.Module.SendMail();
