@@ -39,7 +39,7 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
     [Public, Remote]
     public void Test1()
     {
-        this.SendMailNotification();
+      MailTemplate.PublicFunctions.Template.CreateSystemTemplates(MailTemplate.Templates.Null);
     }
     
     public override string GenerateBody(IAssignmentBase assignment, bool isExpired, bool hasSubstitutions)
@@ -55,51 +55,6 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
         return this.GetMailBodyAsHtml(template.HtmlTemplate, model);
     }
        
-           /// <summary>
-    /// Запустить рассылку по новым заданиям.
-    /// </summary>
-    /// <param name="previousRun">Дата прошлого запуска рассылки.</param>
-    /// <param name="notificationDate">Дата текущей рассылки.</param>
-    /// <param name="assignments">Задания, по которым будет выполнена рассылка.</param>
-    /// <returns>True, если хотя бы одно письмо было отправлено, иначе - false.</returns>
-    public bool? TrySendNewAssignmentsMailing1(DateTime previousRun, DateTime notificationDate, List<IAssignmentBase> assignments)
-    {
-      Logger.Debug("Checking new assignments for mailing");
-      var hasErrors = false;
-
-      var anyMailSent = false;
-      foreach (var assignment in assignments)
-      {
-        var employee = Employees.As(assignment.Performer);
-        if (employee == null)
-          continue;
-
-        var endDate = assignment.Created.Value.AddDays(-1);
-        var substitutions = Substitutions.GetAll(s => Equals(s.User, employee))
-          .Where(s => s.IsSystem != true)
-          .Where(s => s.StartDate == null || s.StartDate.Value <= assignment.Created)
-          .Where(s => s.EndDate == null || s.EndDate.Value >= endDate);
-        
-        var substitutes = Employees.GetAll(r => r.NeedNotifyNewAssignments == true)
-          .Where(e => substitutions.Any(s => Equals(s.Substitute, e)))
-          .Where(e => e.Status != Sungero.CoreEntities.DatabookEntry.Status.Closed)
-          .ToList();
-        
-        var subject = this.GetNewAssignmentSubject(assignment);
-        var mailSent = this.TrySendMailByAssignment(assignment, subject, false, employee, substitutes);
-        if (!mailSent.IsSuccess)
-          hasErrors = true;
-        if (mailSent.IsSuccess && mailSent.AnyMailSended)
-          anyMailSent = true;
-      }
-      if (!assignments.Any())
-        Logger.Debug("No new assignments for mailing");
-      else if (!anyMailSent)
-        Logger.Debug("No subscribers for new assignments mailing");
-      if (!anyMailSent && !hasErrors)
-        return null;
-      return anyMailSent || !hasErrors;
-    }
     
     /// <summary>
     /// Отправить электронное письмо одному или нескольким получателям.

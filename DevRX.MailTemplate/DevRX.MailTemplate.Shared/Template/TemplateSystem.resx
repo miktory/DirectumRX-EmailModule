@@ -73,7 +73,7 @@
   <data name="Property_HtmlTemplate" xml:space="preserve">
     <value>HTML-template</value>
   </data>
-  <data name="Property_IsSelected" xml:space="preserve">
-    <value>Is selected</value>
+  <data name="Property_IsSystem" xml:space="preserve">
+    <value>Is system</value>
   </data>
 </root>

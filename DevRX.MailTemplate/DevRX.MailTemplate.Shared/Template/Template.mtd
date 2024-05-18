@@ -14,11 +14,11 @@
   "EntityStyleSelectors": [
     {
       "NameGuid": "84b41162-42ab-4c45-afb1-9615882a39f8",
-      "Name": "SelectedTemplate",
+      "Name": "IsSystem",
       "Conditions": [
         {
           "NameGuid": "7f702fcc-9ad9-4217-8a90-edf970d3c212",
-          "LeftSideGuid": "9b563a19-89e0-486a-8c25-e641fd0fe7e2",
+          "LeftSideGuid": "0241dde0-358f-43d6-8913-e18e465ed2e9",
           "RightSide": true
         }
       ],
@@ -82,7 +82,8 @@
     }
   ],
   "HandledEvents": [
-    "CreatedServer"
+    "CreatedServer",
+    "ShowingClient"
   ],
   "IconName": "Template.ico",
   "IconResourcesKeys": [],
@@ -100,6 +101,7 @@
       "IsDisplayValue": true,
       "IsQuickSearchAllowed": true,
       "IsRequired": true,
+      "IsUnique": true,
       "ListDataBinderTypeName": "Sungero.Presentation.CommonDataBinders.StringEditorToStringBinder",
       "PreviousPropertyGuid": "1dcedc29-5140-4770-ac92-eabc212326a1"
     },
@@ -114,13 +116,27 @@
     },
     {
       "$type": "Sungero.Metadata.BooleanPropertyMetadata, Sungero.Metadata",
-      "NameGuid": "9b563a19-89e0-486a-8c25-e641fd0fe7e2",
-      "Name": "IsSelected",
-      "Code": "IsSelected",
+      "NameGuid": "0241dde0-358f-43d6-8913-e18e465ed2e9",
+      "Name": "IsSystem",
+      "Code": "IsSystem",
       "IsLoadEagerly": true,
       "IsRequired": true,
       "ListDataBinderTypeName": "Sungero.Presentation.CommonDataBinders.BooleanEditorToBooleanBinder",
       "PreviousPropertyGuid": "41af422a-4bdf-4875-8505-4e4773a2abb4"
+    }
+  ],
+  "PublicFunctions": [
+    {
+      "Name": "CreateSystemTemplates",
+      "Parameters": [
+        {
+          "Name": "template",
+          "ParameterType": "global::DevRX.MailTemplate.ITemplate",
+          "ParameterTypeFullName": "DevRX.MailTemplate.ITemplate, Sungero.Domain.Interfaces"
+        }
+      ],
+      "ReturnType": "void",
+      "ReturnTypeFullName": "System.Void"
     }
   ],
   "PublicStructures": [],

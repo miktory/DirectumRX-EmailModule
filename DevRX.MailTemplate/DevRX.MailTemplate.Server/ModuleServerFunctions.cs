@@ -10,5 +10,6 @@ namespace DevRX.MailTemplate.Server
 {
   public class ModuleFunctions
   {
+    
   }
 }

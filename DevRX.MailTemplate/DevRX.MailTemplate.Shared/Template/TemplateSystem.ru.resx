@@ -73,7 +73,7 @@
   <data name="Property_HtmlTemplate" xml:space="preserve">
     <value>HTML-шаблон</value>
   </data>
-  <data name="Property_IsSelected" xml:space="preserve">
-    <value>Выбрано</value>
+  <data name="Property_IsSystem" xml:space="preserve">
+    <value>Системный</value>
   </data>
 </root>

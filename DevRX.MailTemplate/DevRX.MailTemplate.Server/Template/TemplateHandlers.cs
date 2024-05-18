@@ -12,7 +12,8 @@ namespace DevRX.MailTemplate
 
     public override void Created(Sungero.Domain.CreatedEventArgs e)
     {
-      _obj.IsSelected = false;
+      if (_obj.IsSystem == null)
+        _obj.IsSystem = false;
     }
   }
 
