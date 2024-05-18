@@ -66,7 +66,7 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
     }
     
       [Public, Remote]
-      public void SendMailByTemplate(string eMail, string template, List<Sungero.Content.IElectronicDocument> documents)
+      public void SendMailByTemplate(string eMail, string subject, string template, List<Sungero.Content.IElectronicDocument> documents)
     {
       var message = Mail.CreateMailMessage();
       this.AddLogo(message);
@@ -74,11 +74,18 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
       var body = GetMailBodyAsHtml(template, model);
       message.Body = body;
       message.IsBodyHtml = true;
-      message.Subject = "Тестовое Письмо";
+      message.Subject = subject;
       message.To.Add(eMail);
       foreach (var doc in documents)
       {
+        try
+        {
         message.AddAttachment(doc.LastVersion);
+        }
+        catch (Exception ex)
+        {
+          
+        }
       }
      // message.CC.AddRange(copy);
      

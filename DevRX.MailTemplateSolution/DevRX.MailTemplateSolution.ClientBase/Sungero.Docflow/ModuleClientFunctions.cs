@@ -37,15 +37,32 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Client
     {
       var dialog = Dialogs.CreateInputDialog("Отправить письмо");
       var email = dialog.AddString("E-Mail",true);
+      var subject = dialog.AddString("Тема письма",true);
       var documents = dialog.AddSelectMany("Документ", false, Sungero.Content.ElectronicDocuments.Null);
-      var template = dialog.AddSelect("Шаблон пиьсма", true, MailTemplate.Templates.Null);
+      var template = dialog.AddSelect("Шаблон письма", true, MailTemplate.Templates.Null);
       if (dialog.Show() == DialogButtons.Ok)
       {
+        bool isConfirmed = Dialogs.CreateConfirmDialog("Отправить письмо?").Show();
+        if (isConfirmed)
+        {
+        foreach (var doc in documents.Value)
+        {
+          if (doc.LastVersion == null)
+          {
+            Dialogs.ShowMessage("Ошибка. Один или несколько документов не имеют созданной версии.", MessageType.Error);
+            return;
+          }
+        }
         try
         {
-        Functions.Module.Remote.SendMailByTemplate(email.Value,template.Value.HtmlTemplate,documents.Value.ToList());
+          Functions.Module.Remote.SendMailByTemplate(email.Value,subject.Value,template.Value.HtmlTemplate,documents.Value.ToList());
+          Dialogs.ShowMessage("Письмо отправлено.", MessageType.Information);
         }
-        catch {}
+        catch 
+        {
+          Dialogs.ShowMessage("Ошибка при отправке письма.", MessageType.Error);
+        }
+        }
       }
       
     }
