@@ -58,20 +58,15 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
       return this.GetMailBodyAsHtml(template.HtmlTemplate, model);
     }
     
-    public Sungero.Core.IEmailMessage CreateMessageWithLogo()
-    {
-      var message = Mail.CreateMailMessage();
-      this.AddLogo(message);
-      return message;
-    }
     
-      [Public, Remote]
-      public void SendMailByTemplate(string eMail, string subject, string template, List<Sungero.Content.IElectronicDocument> documents)
+    [Public, Remote]
+    public void SendMailByTemplate(string eMail, string subject, string template, List<Sungero.Content.IElectronicDocument> documents, Sungero.Content.IElectronicDocument dataSource)
     {
       var message = Mail.CreateMailMessage();
       this.AddLogo(message);
       var model = new Dictionary<string,object>();
-      var body = GetMailBodyAsHtml(template, model);
+      var body = dataSource == Sungero.Content.ElectronicDocuments.Null ? this.GetMailBodyAsHtml(template, model) : Nustache.Core.Render.StringToString(template, dataSource,
+                                                 new Nustache.Core.RenderContextBehaviour() { OnException = ex => Logger.Error(ex.Message, ex) });
       message.Body = body;
       message.IsBodyHtml = true;
       message.Subject = subject;
@@ -80,17 +75,17 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
       {
         try
         {
-        message.AddAttachment(doc.LastVersion);
+          message.AddAttachment(doc.LastVersion);
         }
         catch (Exception ex)
         {
           
         }
       }
-     // message.CC.AddRange(copy);
-     
+      // message.CC.AddRange(copy);
+      
       try {
-      Mail.Send(message);
+        Mail.Send(message);
       }
       catch (Exception Ex)
       {
@@ -146,51 +141,6 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
       }
     }
        
-   public override List<Sungero.Docflow.Structures.Module.IEmployeeMailInfo> CreateEmployeesMailInfoToSendSummaryNotification()
-    {
-      var employees = this.GetEmployeesToSendSummaryNotification();
-      var substitutions = this.GetSubstitutionsToSendSummaryNotification(employees);
-      employees.AddRange(this.GetSubstitutorNeedSummaryNotificationEmployees(substitutions));
-      
-      var mailingList = new List<Sungero.Docflow.Structures.Module.IEmployeeMailInfo>();
-      foreach (var employee in employees)
-      {
-        try
-        {
-          var mailInfo = Sungero.Docflow.Structures.Module.EmployeeMailInfo.Create();
-          mailInfo.Id = employee.Id;
-          mailInfo.Email = employee.Email;
-          mailInfo.EmployeeShortName = Sungero.Company.PublicFunctions.Employee.GetShortName(employee, Sungero.Core.DeclensionCase.Genitive, false);
-          mailInfo.LastWorkingDay = Calendar.Now.IsWorkingTime(employee) ? Calendar.Now : Calendar.Now.AddWorkingHours(employee, -1).EndOfWorkingDay();
-          mailInfo.PeriodFirstDay = Calendar.GetUserToday(employee).AddWorkingDays(-2).BeginningOfDay();
-          mailInfo.PeriodLastDay = Calendar.GetUserToday(employee).AddWorkingDays(this.GetSummaryMailNotificationClosestDaysCount()).EndOfDay();
-          mailInfo.SubstitutorEmails = substitutions.Where(s => s.SubstitutedId == employee.Id).Select(s => s.SubstitutorEmail).ToList();
-          mailInfo.NeedNotifyAssignmentsSummary = employee.NeedNotifyAssignmentsSummary == true;
-          mailInfo.EmployeeCurrentDate = Calendar.GetUserToday(employee);
-          mailInfo.AssignmentsAndNotices = new List<Sungero.Docflow.Structures.Module.IWorkflowEntityMailInfo>();
-          mailInfo.ActionItems = new List<Sungero.Docflow.Structures.Module.IWorkflowEntityMailInfo>();
-          mailInfo.Tasks = new List<Sungero.Docflow.Structures.Module.IWorkflowEntityMailInfo>();
-          mailingList.Add(mailInfo);
-        }
-        catch (Exception ex)
-        {
-          this.SummaryMailLogError(string.Format("CreateEmployeesMailInfoToSendSummaryNotification. Employee (ID = {0})", employee.Id), ex);
-        }
-      }
-      
-      return mailingList;
-    }
-  
-   [Public]
-   public override string GetMailBodyAsHtml(string template, System.Collections.Generic.Dictionary<string, object> model)
-   {
-     if (string.IsNullOrEmpty(template) || model == null)
-       return string.Empty;
-     
-     return Nustache.Core.Render.StringToString(template, model,
-                                                new Nustache.Core.RenderContextBehaviour() { OnException = ex => Logger.Error(ex.Message, ex) });
-   }
-      
           
    // Поглядеть
      public override string GetSummaryMailNotificationMailBodyAsHtml(Sungero.Docflow.Structures.Module.IEmployeeMailInfo employeeMailInfo)

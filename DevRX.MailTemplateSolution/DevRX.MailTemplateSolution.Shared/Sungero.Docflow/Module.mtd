@@ -464,28 +464,6 @@
   "NeedResetAppliedCache": true,
   "PublicFunctions": [
     {
-      "Name": "GetAttachment",
-      "Placement": "Client",
-      "ReturnType": "void",
-      "ReturnTypeFullName": "System.Void"
-    },
-    {
-      "Name": "GetMailBodyAsHtml",
-      "Parameters": [
-        {
-          "Name": "template",
-          "ParameterType": "global::System.String",
-          "ParameterTypeFullName": "System.String"
-        },
-        {
-          "Name": "model",
-          "ParameterType": "System.Collections.Generic.Dictionary<global::System.String, System.Object>"
-        }
-      ],
-      "ReturnType": "global::System.String",
-      "ReturnTypeFullName": "System.String"
-    },
-    {
       "Name": "SendMailByTemplate",
       "IsRemote": true,
       "Parameters": [
@@ -508,6 +486,11 @@
           "Name": "documents",
           "ParameterType": "global::System.Collections.Generic.List<global::Sungero.Content.IElectronicDocument>",
           "ParameterTypeFullName": "System.Collections.Generic.List"
+        },
+        {
+          "Name": "dataSource",
+          "ParameterType": "global::Sungero.Content.IElectronicDocument",
+          "ParameterTypeFullName": "Sungero.Content.IElectronicDocument, Sungero.Content.Shared"
         }
       ],
       "Placement": "Shared",
