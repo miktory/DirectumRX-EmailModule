@@ -147,8 +147,12 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
     }
        
           
-   // Поглядеть
-     public override string GetSummaryMailNotificationMailBodyAsHtml(Sungero.Docflow.Structures.Module.IEmployeeMailInfo employeeMailInfo)
+ /// <summary>
+    /// Получить тело письма со сводкой по сотруднику в виде HTML.
+    /// </summary>
+    /// <param name="employeeMailInfo">Информация по сотруднику.</param>
+    /// <returns>Тело письма со сводкой по сотруднику в виде HTML.</returns>
+    public override string GetSummaryMailNotificationMailBodyAsHtml(Sungero.Docflow.Structures.Module.IEmployeeMailInfo employeeMailInfo)
     {
       var employee = Employees.GetAll().Where(x => x.Id == employeeMailInfo.Id).FirstOrDefault();
       var assignmentsBlockContent = this.GetSummaryMailNotificationAssignmentsAndNoticesContentBlockAsHtml(Sungero.Docflow.Resources.AssignmentsBlockName,
@@ -160,8 +164,11 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
       var taskBlockContent = this.GetSummaryMailNotificationTasksContentBlockAsHtml(Sungero.Docflow.Resources.TasksBlockName,
                                                                                     employeeMailInfo.Tasks);
       var model = this.GenerateSummaryBodyModel(assignmentsBlockContent, actionItemBlockContent, taskBlockContent);
-      var template = MailTemplate.PublicFunctions.Template.GetSelectedTemplate(MailTemplate.Templates.Create());
-      return this.GetMailBodyAsHtml(template.HtmlTemplate, model);
+      var template = MailTemplate.Templates.GetAll(r => Equals(r.Name, "SummaryMailMainTemplate")).FirstOrDefault();
+      if (template == MailTemplate.Templates.Null)
+        return this.GetMailBodyAsHtml(Docflow.Resources.SummaryMailMainTemplate, model);
+      else
+        return this.GetMailBodyAsHtml(template.HtmlTemplate, model);
     }
      
        /// <summary>
