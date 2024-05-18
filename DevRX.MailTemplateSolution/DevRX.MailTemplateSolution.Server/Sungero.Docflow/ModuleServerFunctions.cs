@@ -165,6 +165,27 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
     }
      
        /// <summary>
+    /// Получить содержание блока сводки с задачами в виде HTML.
+    /// </summary>
+    /// <param name="blockName">Заголовок блока.</param>
+    /// <param name="tasks">Задачи.</param>
+    /// <returns>Содержание блока сводки с задачами в виде HTML.</returns>
+    public override string GetSummaryMailNotificationTasksContentBlockAsHtml(string blockName,
+                                                                            List<Sungero.Docflow.Structures.Module.IWorkflowEntityMailInfo> tasks)
+    {
+      if (blockName == null || tasks == null || !tasks.Any())
+        return string.Empty;
+
+      var tasksListContent = this.GetSummaryMailNotificationWorkflowEntitiesListContentAsHtml(tasks);
+      var model = this.GenerateBlockContentModel(blockName, tasksListContent, tasks.Count, false, 0);
+      var template = MailTemplate.Templates.GetAll(r => Equals(r.Name, "SummaryMailBlockContentTemplate")).FirstOrDefault();
+      if (template == MailTemplate.Templates.Null)
+        return this.GetMailBodyAsHtml(Docflow.Resources.SummaryMailBlockContentTemplate, model);
+      else
+        return this.GetMailBodyAsHtml(template.HtmlTemplate, model);
+    }
+     
+       /// <summary>
     /// Получить содержание блока сводки с заданиями и уведомлениями в виде HTML.
     /// </summary>
     /// <param name="blockName">Заголовок блока.</param>
