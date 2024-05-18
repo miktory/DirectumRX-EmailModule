@@ -11,7 +11,7 @@ namespace DevRX.HelpDesk.Client
   {
     public virtual void TestTemplateModule(Sungero.Domain.Client.ExecuteActionArgs e)
     {
-      DevRX.MailTemplateSolution.Module.Docflow.PublicFunctions.Module.Test();
+      DevRX.MailTemplateSolution.Module.Docflow.PublicFunctions.Module.SendMail();
     }
 
     public virtual bool CanTestTemplateModule(Sungero.Domain.Client.CanExecuteActionArgs e)

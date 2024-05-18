@@ -8,19 +8,7 @@ using System.IO;
 namespace DevRX.MailTemplateSolution.Module.Docflow.Client
 {
   partial class ModuleFunctions
-  {
-
-    /// <summary>
-    /// 
-    /// </summary>
-    [Public]
-    public void Test()
-    {
-      SendMail();
-      //Functions.Module.Remote.Test();
-      
-    }
-    
+  {    
     /// <summary>
     /// Отправить электронное письмо одному или нескольким получателям.
     /// </summary>
