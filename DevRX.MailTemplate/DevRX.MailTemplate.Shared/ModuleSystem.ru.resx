@@ -58,4 +58,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DisplayName" xml:space="preserve">
+    <value>Отправка электронных писем</value>
+  </data>
+  <data name="CoverTitle" xml:space="preserve">
+    <value>Электронная почта</value>
+  </data>
+  <data name="CoverDescription" xml:space="preserve">
+    <value>Модуль для работы с электронными письмами.</value>
+  </data>
+  <data name="CoverTab_Category1" xml:space="preserve">
+    <value>Отправка писем</value>
+  </data>
+  <data name="CoverAction_SendMail" xml:space="preserve">
+    <value>Отправить письмо</value>
+  </data>
+  <data name="CoverGroup_Group1" xml:space="preserve">
+    <value>Отправка</value>
+  </data>
+  <data name="CoverGroup_Group2" xml:space="preserve">
+    <value>Связанная информация</value>
+  </data>
+  <data name="CoverAction_OpenTemplates" xml:space="preserve">
+    <value>Шаблоны</value>
+  </data>
 </root>

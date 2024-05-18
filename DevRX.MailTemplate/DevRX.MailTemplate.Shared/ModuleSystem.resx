@@ -59,9 +59,33 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DisplayName" xml:space="preserve">
-    <value>MailTemplate</value>
+    <value>Sending emails</value>
   </data>
   <data name="CoverTitle" xml:space="preserve">
-    <value>MailTemplate</value>
+    <value>EMail</value>
+  </data>
+  <data name="CoverDescription" xml:space="preserve">
+    <value>Module for working with emails</value>
+  </data>
+  <data name="CoverTab_Category1" xml:space="preserve">
+    <value>Category1</value>
+  </data>
+  <data name="CoverGroup_Group1" xml:space="preserve">
+    <value>Sending</value>
+  </data>
+  <data name="CoverAction_SendMail" xml:space="preserve">
+    <value>Send email</value>
+  </data>
+  <data name="CoverDescription_SendMail" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CoverGroup_Group2" xml:space="preserve">
+    <value>Related information</value>
+  </data>
+  <data name="CoverAction_OpenTemplates" xml:space="preserve">
+    <value>Templates</value>
+  </data>
+  <data name="CoverDescription_OpenTemplates" xml:space="preserve">
+    <value>HTML-шаблоны, используемые для формирования писем.</value>
   </data>
 </root>

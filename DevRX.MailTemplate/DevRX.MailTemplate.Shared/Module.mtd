@@ -11,19 +11,56 @@
   "CompanyCode": "DevRX",
   "Cover": {
     "NameGuid": "0da749b6-4650-4d39-a597-2c5462d4198b",
-    "Actions": [],
+    "Actions": [
+      {
+        "$type": "Sungero.Metadata.CoverFunctionActionMetadata, Sungero.Metadata",
+        "NameGuid": "4c6f54aa-3e21-4098-b459-bf55a4764c9d",
+        "Name": "SendMail",
+        "FunctionName": "SendMail",
+        "GroupId": "da21b6de-be27-4ee4-bcfd-bcc69d717f62"
+      },
+      {
+        "$type": "Sungero.Metadata.CoverEntityListActionMetadata, Sungero.Metadata",
+        "NameGuid": "b35dff0d-c2fe-4d9b-8182-ff8074e6abcb",
+        "Name": "OpenTemplates",
+        "EntityTypeId": "cfbad27a-5f1f-4be5-aa05-316bc5e9ab95",
+        "GroupId": "e92c5d5b-ae26-4c97-ba8f-d4b4ade887ad"
+      }
+    ],
     "Background": null,
     "Footer": {
       "NameGuid": "6743687b-5e7b-4144-a796-e33b8f1b6e97",
       "BackgroundPosition": "Stretch"
     },
-    "Groups": [],
+    "Groups": [
+      {
+        "NameGuid": "da21b6de-be27-4ee4-bcfd-bcc69d717f62",
+        "Name": "Group1",
+        "BackgroundPosition": "Stretch",
+        "IconName": "GroupIconGroup1_da21b6debe274ee4bcfdbcc69d717f62.png",
+        "TabId": "3b86fbd3-72bb-43b6-8c17-cfea8353332d"
+      },
+      {
+        "NameGuid": "e92c5d5b-ae26-4c97-ba8f-d4b4ade887ad",
+        "Name": "Group2",
+        "BackgroundPosition": "Stretch",
+        "IconName": "GroupIconGroup2_e92c5d5bae264c97ba8fd4b4ade887ad.png",
+        "PreviousItemGuid": "da21b6de-be27-4ee4-bcfd-bcc69d717f62",
+        "TabId": "3b86fbd3-72bb-43b6-8c17-cfea8353332d"
+      }
+    ],
     "Header": {
       "NameGuid": "fef38c4f-18b4-4714-8056-92c672548e89",
-      "BackgroundPosition": "Stretch"
+      "BackgroundPosition": "Stretch",
+      "IconName": "HeaderIcon_fef38c4f18b44714805692c672548e89.png"
     },
     "RemoteControls": [],
-    "Tabs": []
+    "Tabs": [
+      {
+        "NameGuid": "3b86fbd3-72bb-43b6-8c17-cfea8353332d",
+        "Name": "Category1"
+      }
+    ]
   },
   "Dependencies": [
     {
@@ -44,6 +81,14 @@
   "InterfaceNamespace": "DevRX.MailTemplate",
   "IsolatedAssemblyName": "DevRX.MailTemplate.Isolated",
   "IsolatedNamespace": "DevRX.MailTemplate.Isolated",
+  "PublicFunctions": [
+    {
+      "Name": "SendMail",
+      "Placement": "Client",
+      "ReturnType": "void",
+      "ReturnTypeFullName": "System.Void"
+    }
+  ],
   "PublicStructures": [],
   "ResourceInterfaceAssemblyName": "Sungero.Domain.Interfaces",
   "ResourceInterfaceNamespace": "DevRX.MailTemplate",
