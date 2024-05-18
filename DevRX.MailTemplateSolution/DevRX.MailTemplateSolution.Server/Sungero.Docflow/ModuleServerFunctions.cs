@@ -45,7 +45,7 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
     //  SendSummaryMailNotification();
     var template = MailTemplate.PublicFunctions.Template.GetSelectedTemplate(MailTemplate.Templates.Create());
      var model = new Dictionary<string, object>();
-     SendMailByTemplate("distancemezhin@gmail.com",template.HtmlTemplate,model);
+    // SendMailByTemplate("distancemezhin@gmail.com",template.HtmlTemplate,model);
     }
     
     public override string GenerateBody(IAssignmentBase assignment, bool isExpired, bool hasSubstitutions)
@@ -65,24 +65,23 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
       return message;
     }
     
-      [Public]
-    public void SendMailByTemplate(string eMail, string template, System.Collections.Generic.Dictionary<string, object> model)
+      [Public, Remote]
+      public void SendMailByTemplate(string eMail, string template, List<Sungero.Content.IElectronicDocument> documents)
     {
       var message = Mail.CreateMailMessage();
       this.AddLogo(message);
+      var model = new Dictionary<string,object>();
       var body = GetMailBodyAsHtml(template, model);
-      //MailTemplateSolution.Module.Docflow.PublicFunctions.Module.GetAttachment();
       message.Body = body;
       message.IsBodyHtml = true;
       message.Subject = "Тестовое Письмо";
       message.To.Add(eMail);
+      foreach (var doc in documents)
+      {
+        message.AddAttachment(doc.LastVersion);
+      }
      // message.CC.AddRange(copy);
      
-   //MailTemplateSolution.Module.Docflow.PublicFunctions.AddLogo(message);
-   //   var fileStream = File.OpenRead(@"C:\Users\DirectumRobot\Downloads\windowsdesktop-runtime-6.0.29-win-x64.exe");
-  //    var attachmentName = Path.GetFileName(@"C:\Users\DirectumRobot\Downloads\windowsdesktop-runtime-6.0.29-win-x64.exe");
-      // Добавить вложение в виде потока с данными из файла в письмо.
-   //   message.AddAttachment(fileStream, attachmentName);
       try {
       Mail.Send(message);
       }

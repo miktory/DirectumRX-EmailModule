@@ -487,6 +487,7 @@
     },
     {
       "Name": "SendMailByTemplate",
+      "IsRemote": true,
       "Parameters": [
         {
           "Name": "eMail",
@@ -499,10 +500,12 @@
           "ParameterTypeFullName": "System.String"
         },
         {
-          "Name": "model",
-          "ParameterType": "System.Collections.Generic.Dictionary<global::System.String, System.Object>"
+          "Name": "documents",
+          "ParameterType": "global::System.Collections.Generic.List<global::Sungero.Content.IElectronicDocument>",
+          "ParameterTypeFullName": "System.Collections.Generic.List"
         }
       ],
+      "Placement": "Shared",
       "ReturnType": "void",
       "ReturnTypeFullName": "System.Void"
     },

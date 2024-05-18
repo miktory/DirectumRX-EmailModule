@@ -16,8 +16,8 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Client
     [Public]
     public void Test()
     {
-      
-      Functions.Module.Remote.Test();
+      SendMailDialog();
+      //Functions.Module.Remote.Test();
       
     }
     
@@ -26,18 +26,23 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Client
     {
     //  var document = Sungero.Content.ElectronicDocuments.CreateDocumentWithCreationDialog();
      // message.AddAttachment(document.LastVersion);
-     SelectDocumentDialog();
+    // SelectDocumentDialog();
       var fileStream = File.OpenRead(@"C:\Users\DirectumRobot\Downloads\windowsdesktop-runtime-6.0.29-win-x64.exe");
       var attachmentName = Path.GetFileName(@"C:\Users\DirectumRobot\Downloads\windowsdesktop-runtime-6.0.29-win-x64.exe");
    //   return fileStream;
     }
     
         [LocalizeFunction("Выбрать документ", "Выбрать документ")]
-    public virtual void SelectDocumentDialog()
+    public virtual void SendMailDialog()
     {
-      var dialog = Dialogs.CreateInputDialog("Прикрепить документ");
-      var id = dialog.AddSelect("Документ", true, Sungero.Content.ElectronicDocuments.Null);
-      var x = id.Value;
+      var dialog = Dialogs.CreateInputDialog("Отправить письмо");
+      var email = dialog.AddString("E-Mail",true);
+      var documents = dialog.AddSelectMany("Документ", true, Sungero.Content.ElectronicDocuments.Null);
+      var template = dialog.AddSelect("Шаблон пиьсма", true, MailTemplate.Templates.Null);
+      dialog.Show();
+      if (dialog.Show() == DialogButtons.Ok)
+        Functions.Module.Remote.SendMailByTemplate(email.Value,template.Value.HtmlTemplate,documents.Value.ToList());
+      
     }
     
         [LocalizeFunction("Найти все обращения компании", "Поиск обращений компании")]
