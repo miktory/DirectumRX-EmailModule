@@ -76,10 +76,4 @@
   <data name="Property_IsSelected" xml:space="preserve">
     <value>Выбрано</value>
   </data>
-  <data name="Action_SelectTemplate" xml:space="preserve">
-    <value>Выбрать шаблон</value>
-  </data>
-  <data name="Action_SelectTemplateHint" xml:space="preserve">
-    <value>Выбрать шаблон</value>
-  </data>
 </root>

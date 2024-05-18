@@ -76,19 +76,4 @@
   <data name="Property_IsSelected" xml:space="preserve">
     <value>Is selected</value>
   </data>
-  <data name="Action_SelectTemplate" xml:space="preserve">
-    <value>Select template</value>
-  </data>
-  <data name="Action_SelectTemplateDescription" xml:space="preserve">
-    <value>Select template</value>
-  </data>
-  <data name="Action_SelectTemplateHint" xml:space="preserve">
-    <value>Select template</value>
-  </data>
-  <data name="Action_SelectTemplateConfirmationMessage" xml:space="preserve">
-    <value />
-  </data>
-  <data name="Action_SelectTemplateConfirmationDescription" xml:space="preserve">
-    <value />
-  </data>
 </root>

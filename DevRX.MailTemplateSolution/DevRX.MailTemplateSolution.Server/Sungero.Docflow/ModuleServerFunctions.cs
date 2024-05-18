@@ -36,6 +36,11 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
 {
   partial class ModuleFunctions
   {
+    [Public, Remote]
+    public void Test1()
+    {
+        this.SendSummaryMailNotification();
+    }
     public override string GenerateBody(IAssignmentBase assignment, bool isExpired, bool hasSubstitutions)
     {
       if (!Nustache.Core.Helpers.Contains("process_text"))
@@ -190,8 +195,11 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
       
       var groupContent = string.Join(Environment.NewLine, groupsContent);
       var model = this.GenerateBlockContentModel(blockName, groupContent, assignmentsAndNoticesCount, false, 0);
-      
-      return this.GetMailBodyAsHtml(Docflow.Resources.SummaryMailBlockContentTemplate, model);
+      var template = MailTemplate.Templates.GetAll(r => Equals(r.Name, "SummaryMailBlockContentTemplate")).FirstOrDefault();
+      if (template == MailTemplate.Templates.Null)
+        return this.GetMailBodyAsHtml(Docflow.Resources.SummaryMailBlockContentTemplate, model);
+      else
+        return this.GetMailBodyAsHtml(template.HtmlTemplate, model);
     }
     
        /// <summary>

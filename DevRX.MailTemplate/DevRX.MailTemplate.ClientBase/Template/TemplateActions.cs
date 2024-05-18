@@ -9,18 +9,6 @@ namespace DevRX.MailTemplate.Client
 {
   partial class TemplateActions
   {
-    public virtual void SelectTemplate(Sungero.Domain.Client.ExecuteActionArgs e)
-    {
-      Functions.Template.Remote.ChangeTemplatesSelectionToFalse(_obj);
-      _obj.IsSelected = true;
-      _obj.Save();
-    }
-
-    public virtual bool CanSelectTemplate(Sungero.Domain.Client.CanExecuteActionArgs e)
-    {
-      return !_obj.State.IsInserted;
-    }
-
   }
 
 }

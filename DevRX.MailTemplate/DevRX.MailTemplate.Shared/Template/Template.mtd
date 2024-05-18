@@ -2,16 +2,6 @@
   "$type": "Sungero.Metadata.EntityMetadata, Sungero.Metadata",
   "NameGuid": "cfbad27a-5f1f-4be5-aa05-316bc5e9ab95",
   "Name": "Template",
-  "Actions": [
-    {
-      "NameGuid": "29bd04bf-33b6-4553-8c76-07f5e935511a",
-      "Name": "SelectTemplate",
-      "ActionArea": "Card",
-      "GenerateHandler": true,
-      "LargeIconName": null,
-      "SmallIconName": null
-    }
-  ],
   "BaseGuid": "04581d26-0780-4cfd-b3cd-c2cafc5798b0",
   "CanBeNavigationPropertyType": true,
   "Code": "Template",
@@ -153,17 +143,7 @@
     "NameGuid": "5113cdc2-4f34-4fda-8a59-175933efb1b9",
     "Name": "RibbonCard",
     "Categories": [],
-    "Elements": [
-      {
-        "$type": "Sungero.Metadata.RibbonActionButtonMetadata, Sungero.Metadata",
-        "NameGuid": "c3eca83c-e3e2-43b6-978f-707380bbb896",
-        "Name": "SelectTemplate",
-        "ActionGuid": "29bd04bf-33b6-4553-8c76-07f5e935511a",
-        "ButtonSize": "Large",
-        "Index": 51,
-        "ParentGuid": "f3b0ddcd-9d1e-4ca3-8780-695ae25a9e8b"
-      }
-    ],
+    "Elements": [],
     "Groups": [],
     "IsAncestorMetadata": true,
     "Pages": [],
