@@ -72,10 +72,10 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Client
             Dialogs.ShowMessage("Письмо отправлено.", MessageType.Information);
           else
             Dialogs.ShowMessage("Ошибка при отправке письма.", MessageType.Error);
-          return result;
         }
       }
+      return result;
     }
-    
+
   }
 }
