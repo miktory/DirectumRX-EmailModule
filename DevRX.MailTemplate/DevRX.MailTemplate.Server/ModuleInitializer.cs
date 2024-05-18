@@ -9,5 +9,19 @@ namespace DevRX.MailTemplate.Server
 {
   public partial class ModuleInitializer
   {
+
+    public override void Initializing(Sungero.Domain.ModuleInitializingEventArgs e)
+    {
+      Init();
+    }
+
+    /// <summary>
+    ///  Инициализация модуля
+    /// </summary>
+    public void Init()
+    {
+      PublicFunctions.Template.CreateSystemTemplates(Templates.Create());
+    }
+    
   }
 }

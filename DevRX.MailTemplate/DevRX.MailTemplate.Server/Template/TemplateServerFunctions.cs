@@ -9,6 +9,9 @@ namespace DevRX.MailTemplate.Server
 {
   partial class TemplateFunctions
   {
+    /// <summary>
+    /// Добавить в справочник системные HTML-шаблоны.
+    /// </summary>
     [Public]
     public void CreateSystemTemplates()
     {
@@ -44,11 +47,11 @@ namespace DevRX.MailTemplate.Server
     
     public ITemplate CreateSystemTemplate(string name, string htmlText)
     {
-        var template = Templates.Create();
-        template.HtmlTemplate = htmlText;
-        template.Name = name;
-        template.IsSystem = true;
-        return template;
+      var template = Templates.Create();
+      template.HtmlTemplate = htmlText;
+      template.Name = name;
+      template.IsSystem = true;
+      return template;
     }
   }
 }
