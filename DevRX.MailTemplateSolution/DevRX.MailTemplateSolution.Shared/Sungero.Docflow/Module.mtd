@@ -501,6 +501,27 @@
       "ReturnTypeFullName": "System.Void"
     },
     {
+      "Name": "SendMailByTemplate1",
+      "Parameters": [
+        {
+          "Name": "eMail",
+          "ParameterType": "global::System.String",
+          "ParameterTypeFullName": "System.String"
+        },
+        {
+          "Name": "template",
+          "ParameterType": "global::System.String",
+          "ParameterTypeFullName": "System.String"
+        },
+        {
+          "Name": "model",
+          "ParameterType": "System.Collections.Generic.Dictionary<global::System.String, System.Object>"
+        }
+      ],
+      "ReturnType": "void",
+      "ReturnTypeFullName": "System.Void"
+    },
+    {
       "Name": "Test",
       "Placement": "Client",
       "ReturnType": "void",

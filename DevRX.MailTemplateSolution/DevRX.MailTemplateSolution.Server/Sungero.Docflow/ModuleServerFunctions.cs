@@ -42,7 +42,10 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
     [Remote]
     public virtual void Test()
     {
-      SendSummaryMailNotification();
+    //  SendSummaryMailNotification();
+    var template = MailTemplate.PublicFunctions.Template.GetSelectedTemplate(MailTemplate.Templates.Create());
+     var model = new Dictionary<string, object>();
+     SendMailByTemplate1("distancemezhin@gmail.com",template.HtmlTemplate,model);
     }
     
     public override string GenerateBody(IAssignmentBase assignment, bool isExpired, bool hasSubstitutions)
@@ -53,6 +56,34 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
       var model = this.GenerateBodyModel(assignment, isExpired, hasSubstitutions);
       var template = MailTemplate.PublicFunctions.Template.GetSelectedTemplate(MailTemplate.Templates.Create());
       return this.GetMailBodyAsHtml(template.HtmlTemplate, model);
+    }
+    
+    public Sungero.Core.IEmailMessage CreateMessageWithLogo()
+    {
+      var message = Mail.CreateMailMessage();
+      this.AddLogo(message);
+      return message;
+    }
+    
+      [Public]
+    public void SendMailByTemplate1(string eMail, string template, System.Collections.Generic.Dictionary<string, object> model)
+    {
+      var message = Mail.CreateMailMessage();
+      this.AddLogo(message);
+      var body = GetMailBodyAsHtml(template, model);
+
+      message.Body = body;
+      message.IsBodyHtml = true;
+      message.Subject = "Тестовое Письмо";
+      message.To.Add(eMail);
+     // message.CC.AddRange(copy);
+     
+   //MailTemplateSolution.Module.Docflow.PublicFunctions.AddLogo(message);
+      var fileStream = File.OpenRead(@"C:\Users\DirectumRobot\Downloads\windowsdesktop-runtime-6.0.29-win-x64.exe");
+      var attachmentName = Path.GetFileName(@"C:\Users\DirectumRobot\Downloads\windowsdesktop-runtime-6.0.29-win-x64.exe");
+      // Добавить вложение в виде потока с данными из файла в письмо.
+      message.AddAttachment(fileStream, attachmentName);
+      Mail.Send(message);
     }
     
       public override void SendSummaryMailNotificationMessages(List<Sungero.Core.IEmailMessage> messages)
@@ -139,14 +170,14 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Server
     }
   
    [Public]
-      public override string GetMailBodyAsHtml(string template, System.Collections.Generic.Dictionary<string, object> model)
-    {
-      if (string.IsNullOrEmpty(template) || model == null)
-        return string.Empty;
-      
-      return Nustache.Core.Render.StringToString(template, model,
-                                                 new Nustache.Core.RenderContextBehaviour() { OnException = ex => Logger.Error(ex.Message, ex) });
-    }
+   public override string GetMailBodyAsHtml(string template, System.Collections.Generic.Dictionary<string, object> model)
+   {
+     if (string.IsNullOrEmpty(template) || model == null)
+       return string.Empty;
+     
+     return Nustache.Core.Render.StringToString(template, model,
+                                                new Nustache.Core.RenderContextBehaviour() { OnException = ex => Logger.Error(ex.Message, ex) });
+   }
       
         [Public]
     public void SendMailByTemplate(string eMail, string template, System.Collections.Generic.Dictionary<string, object> model)
