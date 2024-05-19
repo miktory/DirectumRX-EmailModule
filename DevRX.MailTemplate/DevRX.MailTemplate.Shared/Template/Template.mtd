@@ -128,13 +128,6 @@
   "PublicFunctions": [
     {
       "Name": "CreateSystemTemplates",
-      "Parameters": [
-        {
-          "Name": "template",
-          "ParameterType": "global::DevRX.MailTemplate.ITemplate",
-          "ParameterTypeFullName": "DevRX.MailTemplate.ITemplate, Sungero.Domain.Interfaces"
-        }
-      ],
       "ReturnType": "void",
       "ReturnTypeFullName": "System.Void"
     }

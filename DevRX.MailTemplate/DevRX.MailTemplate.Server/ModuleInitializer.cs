@@ -20,7 +20,7 @@ namespace DevRX.MailTemplate.Server
     /// </summary>
     public void Init()
     {
-      PublicFunctions.Template.CreateSystemTemplates(Templates.Create());
+      PublicFunctions.Template.CreateSystemTemplates();
     }
     
   }

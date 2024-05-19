@@ -13,7 +13,7 @@ namespace DevRX.MailTemplate.Server
     /// Добавить в справочник системные HTML-шаблоны.
     /// </summary>
     [Public]
-    public void CreateSystemTemplates()
+    public static void CreateSystemTemplates()
     {
       var templates = Templates.GetAll();
       var mailTemplate = templates.Where(x => x.Name == "MailTemplate" && x.IsSystem.Equals(true)).FirstOrDefault();
@@ -45,7 +45,7 @@ namespace DevRX.MailTemplate.Server
       }
     }
     
-    public ITemplate CreateSystemTemplate(string name, string htmlText)
+    public static ITemplate CreateSystemTemplate(string name, string htmlText)
     {
       var template = Templates.Create();
       template.HtmlTemplate = htmlText;
