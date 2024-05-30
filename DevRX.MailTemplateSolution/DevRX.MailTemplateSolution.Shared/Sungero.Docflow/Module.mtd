@@ -507,19 +507,6 @@
       "Placement": "Shared",
       "ReturnType": "global::System.Boolean",
       "ReturnTypeFullName": "System.Boolean"
-    },
-    {
-      "Name": "Test",
-      "Placement": "Client",
-      "ReturnType": "void",
-      "ReturnTypeFullName": "System.Void"
-    },
-    {
-      "Name": "Test1",
-      "IsRemote": true,
-      "Placement": "Shared",
-      "ReturnType": "void",
-      "ReturnTypeFullName": "System.Void"
     }
   ],
   "PublicStructures": [],

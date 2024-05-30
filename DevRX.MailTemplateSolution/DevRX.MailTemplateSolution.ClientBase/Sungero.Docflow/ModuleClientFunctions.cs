@@ -9,11 +9,6 @@ namespace DevRX.MailTemplateSolution.Module.Docflow.Client
 {
   partial class ModuleFunctions
   {    
-    [Public]
-    public virtual void Test()
-    {
-      Module.Docflow.PublicFunctions.Module.Remote.Test1();
-    }
     /// <summary>
     /// Отправить электронное письмо одному или нескольким получателям.
     /// </summary>

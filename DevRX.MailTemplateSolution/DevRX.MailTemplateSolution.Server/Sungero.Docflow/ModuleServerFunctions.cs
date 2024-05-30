@@ -35,13 +35,7 @@ using SettingsValidationMessageTypes = Sungero.Docflow.Constants.SmartProcessing
 namespace DevRX.MailTemplateSolution.Module.Docflow.Server
 {
   partial class ModuleFunctions
-  {
-    [Public, Remote]
-    public void Test1()
-    {
-      MailTemplate.PublicFunctions.Template.CreateSystemTemplates(MailTemplate.Templates.Create());
-    }
-    
+  { 
     public override string GenerateBody(IAssignmentBase assignment, bool isExpired, bool hasSubstitutions)
     {
       if (!Nustache.Core.Helpers.Contains("process_text"))

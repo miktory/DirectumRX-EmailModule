@@ -9,15 +9,6 @@ namespace DevRX.HelpDesk.Client
 {
   partial class RequestActions
   {
-    public virtual void TestTemplateModule(Sungero.Domain.Client.ExecuteActionArgs e)
-    {
-      DevRX.MailTemplateSolution.Module.Docflow.PublicFunctions.Module.Test();
-    }
-
-    public virtual bool CanTestTemplateModule(Sungero.Domain.Client.CanExecuteActionArgs e)
-    {
-      return true;
-    }
 
     public virtual void FindRequestById(Sungero.Domain.Client.ExecuteActionArgs e)
     {

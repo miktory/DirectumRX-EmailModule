@@ -35,14 +35,6 @@
       "GenerateHandler": true,
       "LargeIconName": null,
       "SmallIconName": null
-    },
-    {
-      "NameGuid": "5283e480-0d32-496e-8c19-dd3f0155a7cb",
-      "Name": "TestTemplateModule",
-      "ActionArea": "Card",
-      "GenerateHandler": true,
-      "LargeIconName": null,
-      "SmallIconName": null
     }
   ],
   "BaseGuid": "04581d26-0780-4cfd-b3cd-c2cafc5798b0",
@@ -634,14 +626,6 @@
         "ActionGuid": "d4d8729d-be50-475f-bed9-488e61d3d055",
         "ButtonSize": "Large",
         "Index": 2,
-        "ParentGuid": "be5eb085-2d66-454e-a821-4fd56f7c3296"
-      },
-      {
-        "$type": "Sungero.Metadata.RibbonActionButtonMetadata, Sungero.Metadata",
-        "NameGuid": "bad3a42e-6e27-47fd-84a7-a7aceef227e4",
-        "Name": "ActionButton3",
-        "ActionGuid": "5283e480-0d32-496e-8c19-dd3f0155a7cb",
-        "Index": 3,
         "ParentGuid": "be5eb085-2d66-454e-a821-4fd56f7c3296"
       }
     ],

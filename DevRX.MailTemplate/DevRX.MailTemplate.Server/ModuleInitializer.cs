@@ -21,6 +21,12 @@ namespace DevRX.MailTemplate.Server
     public void Init()
     {
       PublicFunctions.Template.CreateSystemTemplates();
+      GrantAccessRights();
+    }
+    
+    public void GrantAccessRights()
+    {
+      Templates.AccessRights.Grant(Roles.Administrators, DefaultAccessRightsTypes.FullAccess);
     }
     
   }
